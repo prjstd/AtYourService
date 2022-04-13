@@ -74,6 +74,7 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "رجاءا املئ كامل البيانات", Toast.LENGTH_SHORT).show();
                     pb.dismiss();
                 } else {
+
                     final FirebaseAuth auth = FirebaseAuth.getInstance();
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,new OnCompleteListener<AuthResult>() {
                         @Override
