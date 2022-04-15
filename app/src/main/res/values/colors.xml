@@ -25,4 +25,6 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#D434B8</color>
     <color name="orange">#FF8C00</color>
+    <color name="grey">#E3E5E6</color>
+
 </resources>

@@ -4,192 +4,214 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
+    android:background="@drawable/srvicon"
+    android:fitsSystemWindows="true"
     tools:context=".SignupActivity">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:background="@drawable/opwhiteshape"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/lay">
+            android:layout_height="match_parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="30dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:elevation="12dp"
+                    android:id="@+id/view2"
+                    app:cardCornerRadius="60dp"
+                    android:layout_centerHorizontal="true"
+                    android:innerRadius="0dp"
+                    android:shape="ring"
+                    android:thicknessRatio="1.9"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageView1"
+                        android:src="@drawable/icon"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY">
+                    </ImageView>
+                </androidx.cardview.widget.CardView>
+            <RelativeLayout
+                android:id="@+id/body"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/opblackhape"
+                android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_lock_black_24dp"
-                android:id="@+id/img"
-                />
+                android:layout_below="@id/view2">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/emailf"
-                android:textColorHint="#ffffff"
-                android:layout_below="@id/img">
-
-                <EditText
-                    android:id="@+id/email"
+                <RelativeLayout
+                    android:id="@+id/lay"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="بريد إلكتروني"
-                    android:textColorHint="#ffffff"
-                    android:textSize="24dp"
-                    android:padding="5dp"
-                    android:drawableRight="@drawable/ic_email_black_24dp"
-                    android:drawableTint="#ffffff"
-                    android:drawablePadding="5dp"
-                    android:backgroundTint="#ffffff"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="@android:color/white" />
+                    android:layout_height="match_parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/fullNameField"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/shape"
+                        android:drawableRight="@drawable/ic_baseline_person_pin_24"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/orange"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="الاسم الثلاثي"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textAlignment="textStart"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="15dp"
+                        tools:ignore="RtlCompat" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fullnamef"
-                android:textColorHint="#ffffff"
-                android:layout_below="@+id/emailf">
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/fullNameField"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/shape"
+                        android:drawableRight="@drawable/ic_email_black_24dp"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/orange"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="الايميل"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="15dp"
+                        tools:ignore="RtlCompat" />
 
-                <EditText
-                    android:id="@+id/fullNameField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="الاسم الثلاثي"
-                    android:maxLines="1"
-                    android:inputType="text"
-                    android:textColorHint="#ffffff"
-                    android:textSize="24dp"
-                    android:padding="5dp"
-                    android:drawableRight="@drawable/ic_lock_black_24dp"
-                    android:drawableTint="#ffffff"
-                    android:drawablePadding="5dp"
-                    android:backgroundTint="#ffffff"
-                    android:singleLine="true"
-                    android:textColor="@android:color/white" />
+                    <EditText
+                        android:id="@+id/BallanceField"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/email"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/shape"
+                        android:drawableRight="@drawable/ic_balance"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/orange"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="الرصيد"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="15dp"
+                        android:singleLine="true"
+                        android:textAlignment="textStart"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="15dp"
+                        tools:ignore="RtlCompat" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/passf"
-                android:textColorHint="#ffffff"
-                android:layout_below="@id/fullnamef">
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusableInTouchMode="true"
-                    android:hint="@string/hint_password"
-                    android:textColorHint="#ffffff"
-                    android:textSize="24dp"
-                    android:padding="5dp"
-                    android:drawableRight="@drawable/ic_lock_black_24dp"
-                    android:drawableTint="#ffffff"
-                    android:drawablePadding="5dp"
-                    android:backgroundTint="#ffffff"
-                    android:imeActionId="@+id/login"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="#797578"
-                    tools:ignore="InvalidImeActionId" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/balancef"
-                android:textColorHint="#ffffff"
-                android:layout_below="@id/passf">
-
-                <EditText
-                    android:id="@+id/BallanceField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="الرصيد"
-                    android:textColorHint="#ffffff"
-                    android:textSize="24dp"
-                    android:padding="5dp"
-                    android:drawableRight="@drawable/ic_person_black_24dp"
-                    android:drawableTint="#ffffff"
-                    android:drawablePadding="5dp"
-                    android:backgroundTint="#ffffff"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColor="#ffffff" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <Button
-                android:id="@+id/sign_up_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/black"
-                android:text="إنشاء حساب"
-                android:textSize="24dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textColor="@color/orange"
-                android:textStyle="bold"
-                android:layout_below="@id/balancef"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="15dp"
-                android:weightSum="2"
-                android:layout_below="@id/sign_up_button"
-                android:layout_height="wrap_content">
-
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/BallanceField"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/shape"
+                        android:drawableRight="@drawable/ic_lock_black_24dp"
+                        android:drawablePadding="15dp"
+                        android:drawableTint="@color/orange"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:hint="كلمة السر"
+                        android:inputType="textVisiblePassword"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="15dp"
+                        tools:ignore="RtlCompat" />
+                </RelativeLayout>
+            </RelativeLayout>
                 <Button
-                    android:id="@+id/sign_in_button"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    android:text="@string/btn_link_to_login"
-                    android:textAllCaps="false"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="15dp"
-                    android:textColor="@color/orange"
-                    android:layout_marginRight="7dp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
+                    android:id="@+id/sign_up_button"
+                    android:layout_width="300dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape2"
+                    android:text="إنشاء حساب"
+                    android:layout_below="@id/body"
+                    android:textSize="24dp"
+                    android:textColor="#ffff"
+                    android:textStyle="bold"/>
 
-                <Button
-                    android:id="@+id/btn_reset_password"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginRight="15dp"
-                    android:textSize="16dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    android:textStyle="bold"
-                    android:text="@string/btn_forgot_password"
-                    android:textAllCaps="false"
-                    android:textColor="@color/orange"
-                    android:layout_below="@id/sign_up_button"/>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_marginTop="15dp"
+                    android:weightSum="2"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/sign_up_button"
+                    android:layout_height="wrap_content">
 
-            </LinearLayout>
-        </RelativeLayout>
+                    <Button
+                        android:id="@+id/sign_in_button"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:background="@drawable/shape2"
+                        android:text="تسجيل الدخول"
+                        android:textAllCaps="false"
+                        android:textSize="16dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="7dp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"/>
 
-    </ScrollView>
+                    <Button
+                        android:id="@+id/btn_reset_password"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textSize="16dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/shape2"
+                        android:textStyle="bold"
+                        android:text="نسيت كلمة السر؟"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/sign_up_button"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
