@@ -10,12 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AtYourService">
         <activity
+            android:name=".Reset.Activities.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.Activities.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FlagService.Activiteis.AdminFlagServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FlagService.Activiteis.UserFlagServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.Activities.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

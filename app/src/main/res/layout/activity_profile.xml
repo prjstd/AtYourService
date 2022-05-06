@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.Activities.ProfileActivity">
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circleshape"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/img1"
+        android:elevation="20dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:elevation="20dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/img"/>
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/boxRel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/whiteshaperad"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_above="@id/btn_resPass"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="50px"
+                android:orientation="vertical"
+                android:id="@+id/infoLay">
+
+                <LinearLayout
+                    android:id="@+id/name_Lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="5dp"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.50"
+                        android:text="الاسم:"
+                        android:textColor="#403E3E"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/name_ed"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:background="@drawable/whiteshaperad"
+                        android:elevation="1dp"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:inputType="text"
+                        android:paddingTop="2dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:paddingTop="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text="الاسم"
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/email_Lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_below="@id/name_Lay"
+                    android:layout_marginTop="15dp"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.50"
+                        android:text="الايميل:"
+                        android:textColor="#403E3E"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/email_ed"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:background="@drawable/whiteshaperad"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:paddingTop="2dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/email_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:paddingTop="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text="ايميل"
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/balance_Lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_below="@id/email_Lay"
+                    android:layout_marginTop="15dp"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.50"
+                        android:text="الرصيد:"
+                        android:textColor="#403E3E"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/balance_ed"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:background="@drawable/whiteshaperad"
+                        android:elevation="10dp"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:paddingTop="2dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/balance_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2.50"
+                        android:paddingTop="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        android:text="الرصيد"
+                        android:textColor="@color/black"
+                        android:textDirection="rtl"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/password_Lay"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_below="@id/balance_Lay"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layoutDirection="rtl"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingTop="5dp"-->
+<!--                    android:paddingBottom="5dp"-->
+<!--                    android:weightSum="3">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:text="كلمة السر:"-->
+<!--                        android:textColor="#403E3E"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/password_ed"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:background="@drawable/whiteshaperad"-->
+<!--                        android:elevation="10dp"-->
+<!--                        android:ellipsize="start"-->
+<!--                        android:ems="10"-->
+<!--                        android:enabled="true"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLength="20"-->
+<!--                        android:paddingTop="2dp"-->
+<!--                        android:paddingRight="7dp"-->
+<!--                        android:paddingBottom="2dp"-->
+<!--                        android:text=""-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textDirection="rtl"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:visibility="gone" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/password_txt"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:paddingTop="7dp"-->
+<!--                        android:paddingRight="7dp"-->
+<!--                        android:paddingBottom="2dp"-->
+<!--                        android:text="عنوان"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textDirection="rtl"-->
+<!--                        android:textSize="19dp"-->
+<!--                        android:textStyle="bold" />-->
+<!--                </LinearLayout>-->
+
+
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/editRel"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/blackcircleshape"
+                android:elevation="10dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/ic_baseline_edit_24"
+                    android:backgroundTint="@color/white"
+                    android:elevation="20dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/saveRel"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/blackcircleshape"
+                android:elevation="10dp"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/save"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/ic_baseline_save_24"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:elevation="20dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    <Button
+        android:id="@+id/btn_resPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dip"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape2"
+        android:fontFamily="serif"
+        android:text="تغيير كلمة السر"
+        android:textColor="#ffffff"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

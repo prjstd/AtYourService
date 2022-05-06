@@ -3,14 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/blackcircleshape.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/btn_back.xml" value="0.309" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/circleshape.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/ic_baseline_save_24.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/oporangehape.xml" value="0.309" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/textboxstyle.xml" value="0.309" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/whiteshaperad.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/btn_back5.xml" value="0.309" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/opblackhape.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/opwhiteshape.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/shape.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/shape2.xml" value="0.309" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_home.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_signup.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_profile.xml" value="0.26458333333333334" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_signup.xml" value="0.33" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_flag_service.xml" value="0.33" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/row_home.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

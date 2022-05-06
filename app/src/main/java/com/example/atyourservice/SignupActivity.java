@@ -88,6 +88,7 @@ public class SignupActivity extends AppCompatActivity {
                             }
                             else {
                                 Map<String, String> map = new HashMap<>();
+                                map.put("Uid", auth.getCurrentUser().getUid());
                                 map.put("Full-Name", fullname);
                                 map.put("Email", email);
                                 map.put("Password", password);

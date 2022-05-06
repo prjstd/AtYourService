@@ -178,6 +178,7 @@
                     android:layout_marginTop="15dp"
                     android:weightSum="2"
                     android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/sign_up_button"

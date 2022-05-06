@@ -27,4 +27,7 @@
     <color name="orange">#FF8C00</color>
     <color name="grey">#E3E5E6</color>
 
+    <color name="transperant">#00FFFFFF</color>
+
+
 </resources>
