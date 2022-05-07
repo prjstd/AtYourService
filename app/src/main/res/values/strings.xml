@@ -47,4 +47,10 @@
     <string name="main_menu_close">Close App</string>
 
 
+    //PendingService
+    <string name="successReqTitle">تنبيه</string>
+    <string name="successReqBody">لقد تم تقديم طلبك بنجاح</string>
+    <string name="btnSuccessReq">حسنا</string>
+
+
 </resources>

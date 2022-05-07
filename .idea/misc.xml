@@ -11,6 +11,7 @@
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/oporangehape.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/textboxstyle.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable-v24/whiteshaperad.xml" value="0.2695" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/boardershape.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/btn_back5.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.309" />
@@ -26,6 +27,8 @@
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_flag_service.xml" value="0.33" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/row_home.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/seccessReqBox.xml" value="0.33" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/seccess_req_dialog.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
