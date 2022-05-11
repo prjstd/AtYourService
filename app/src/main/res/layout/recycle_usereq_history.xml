@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:elevation="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/postImage"
+                android:layout_width="65dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_height="65dp"
+                android:scaleType="center"
+                android:background="@drawable/icon"/>
+
+            <TextView
+                android:id="@+id/tvReqTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:singleLine="true"
+                android:layout_toRightOf="@+id/postImage"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:textColor="#000000"
+                android:text="TextView"
+                android:textAlignment="center" />
+            <TextView
+                android:id="@+id/tvReqDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_below="@+id/tvReqTitle"
+                android:layout_toRightOf="@+id/postImage"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="serif"
+                android:layout_marginBottom="5dp"
+                android:textColor="#000000"
+                android:text="TextView"
+                android:textAlignment="center" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvLocation"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:textSize="16dp"-->
+            <!--                android:maxLines="2"-->
+            <!--                android:layout_below="@+id/tvPostTitle"-->
+            <!--                android:layout_toRightOf="@+id/postImage"-->
+            <!--                android:layout_marginLeft="15dp"-->
+            <!--                android:layout_marginRight="15dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:layout_marginTop="15dp"-->
+            <!--                android:fontFamily="serif"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:text="TextView"-->
+            <!--                android:textAlignment="center" />-->
+
+
+        </RelativeLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

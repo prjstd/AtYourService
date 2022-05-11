@@ -1,4 +1,4 @@
-package com.example.atyourservice.FlagService.Activiteis;
+package com.example.atyourservice.UserServices.Activiteis;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -20,10 +20,9 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.example.atyourservice.FlagService.Class.Services;
+import com.example.atyourservice.UserServices.Class.Services;
 import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.example.atyourservice.R;
-import com.example.atyourservice.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +30,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -90,7 +88,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
 
                 for(int i=0; i<gr.size(); i++) {
 //                    test.add(gr.get(0).toObject(Users.class));
-                    if(gr.get(i).getString("id").equals("NCRC")){
+                    if(gr.get(i).getString("id").equals("flagService")){
                       srv = new Services(gr.get(i).getString("name").toString(),gr.get(i).getString("price").toString());
                     }
                 }
@@ -105,10 +103,10 @@ public class UserFlagServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 pb.show();
-                if(nationalNumField.getText().equals("")){
-                    Toast.makeText(UserFlagServiceActivity.this, " ادخل الرقم الوطني من فضلك", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(nationalNumField.getText().equals("")){
+//                    Toast.makeText(UserFlagServiceActivity.this, " ادخل الرقم الوطني من فضلك", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                     Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
                 }

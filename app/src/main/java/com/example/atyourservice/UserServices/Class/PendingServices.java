@@ -1,4 +1,4 @@
-package com.example.atyourservice.FlagService.Class;
+package com.example.atyourservice.UserServices.Class;
 
 public class PendingServices {
     public  String Service_Name="", User_id="", Nationality_Number="", Request_Date="", Replay_Date="", Service_Status="", Payment_Status="", Service_Price="";

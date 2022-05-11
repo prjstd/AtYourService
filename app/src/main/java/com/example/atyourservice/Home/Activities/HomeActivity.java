@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
-import com.example.atyourservice.FlagService.Activiteis.AdminFlagServiceActivity;
-import com.example.atyourservice.FlagService.Activiteis.UserFlagServiceActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.example.atyourservice.Home.Adapter.HomeAdapter;
 import com.example.atyourservice.R;
 

@@ -1,4 +1,4 @@
-package com.example.atyourservice.FlagService.Class;
+package com.example.atyourservice.UserServices.Class;
 
 public class Services {
     public String type="", price="";
