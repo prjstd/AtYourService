@@ -48,11 +48,11 @@ public class HomeActivity extends AppCompatActivity {
         pics = new ArrayList<>();
 
         menu.add(getResources().getString(R.string.main_menu_flag));
-        menu.add(getResources().getString(R.string.main_menu_note));
-        menu.add(getResources().getString(R.string.main_menu_finance));
-        menu.add(getResources().getString(R.string.main_menu_activity));
-        menu.add(getResources().getString(R.string.main_menu_tracker));
-        menu.add(getResources().getString(R.string.main_menu_social));
+        menu.add(getResources().getString(R.string.main_menu_ncrc));
+        menu.add(getResources().getString(R.string.main_menu_identity));
+        menu.add(getResources().getString(R.string.main_menu_born));
+        menu.add(getResources().getString(R.string.main_menu_profile));
+        menu.add(getResources().getString(R.string.main_menu_history));
 
         pics.add(R.drawable.shopping);
         pics.add(R.drawable.note);

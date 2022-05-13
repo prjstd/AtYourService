@@ -56,21 +56,21 @@
     </RelativeLayout>
 
 
-    <com.luseen.spacenavigation.SpaceNavigationView
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_centerHorizontal="true"
-        app:centre_button_icon="@drawable/ic_baseline_home_24"
-        app:inactive_centre_button_icon_color="@color/orange"
-        app:active_item_color="#ffffff"
-        app:inactive_item_color="#ffffff"
-        app:space_background_color="@color/orange"
-        app:active_centre_button_icon_color="@color/orange"
-        app:centre_button_color="#ffffff"
-        android:layout_alignParentBottom="true"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        app:layout_behavior="com.luseen.spacenavigation.SpaceNavigationViewBehavior" />
+<!--    <com.luseen.spacenavigation.SpaceNavigationView-->
+<!--        android:id="@+id/space"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        app:centre_button_icon="@drawable/ic_baseline_home_24"-->
+<!--        app:inactive_centre_button_icon_color="@color/orange"-->
+<!--        app:active_item_color="#ffffff"-->
+<!--        app:inactive_item_color="#ffffff"-->
+<!--        app:space_background_color="@color/orange"-->
+<!--        app:active_centre_button_icon_color="@color/orange"-->
+<!--        app:centre_button_color="#ffffff"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        app:layout_behavior="com.luseen.spacenavigation.SpaceNavigationViewBehavior" />-->
 
 
 </RelativeLayout>

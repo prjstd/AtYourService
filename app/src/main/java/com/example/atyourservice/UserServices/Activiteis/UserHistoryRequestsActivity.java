@@ -1,4 +1,4 @@
-package com.example.atyourservice.Home.Activities;
+package com.example.atyourservice.UserServices.Activiteis;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;

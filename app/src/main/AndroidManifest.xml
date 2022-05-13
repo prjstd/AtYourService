@@ -13,7 +13,7 @@
             android:name=".AdminServices.Activities.AdminNCRCServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".Home.Activities.UserHistoryRequestsActivity"
+            android:name=".UserServices.Activiteis.UserHistoryRequestsActivity"
             android:exported="false" />
         <activity
             android:name=".Reset.Activities.ResetPasswordActivity"
