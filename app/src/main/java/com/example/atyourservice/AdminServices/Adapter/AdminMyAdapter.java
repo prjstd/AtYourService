@@ -2,22 +2,37 @@ package com.example.atyourservice.AdminServices.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.atyourservice.Home.Activities.ProfileActivity;
 import com.example.atyourservice.R;
 import com.example.atyourservice.UserServices.Class.PendingServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>{
 
@@ -39,8 +54,9 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(AdminRequestViewHolder holder, int position) {
-        holder.tvReqTitle.setText(mRequestsList.get(position).Service_Name);
-        holder.tvReqDate.setText("تاريخ التقديم : "+mRequestsList.get(position).Request_Date);
+        holder.tvReqTitle.setText("الخدمة: "+mRequestsList.get(position).Service_Name);
+        holder.tvUserName.setText("المقدم:"+mRequestsList.get(position).Full_Name);
+        holder.tvReqDate.setText("تاريخ التقديم: "+mRequestsList.get(position).Request_Date);
 
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,56 +68,122 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                         View vi;
                         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        vi = inflater.inflate(R.layout.user_history_info_dialog, null);
+                        vi = inflater.inflate(R.layout.admin_request_info_dialog, null);
                         builder.setView(vi);
 
-                        final TextView user = vi.findViewById(R.id.tv_userpresent);
-                        TextView phone=vi.findViewById(R.id.tv_phone_present);
-                        TextView title=vi.findViewById(R.id.tv_title_present);
-                        TextView disc=vi.findViewById(R.id.tv_disc_present);
-                        TextView from=vi.findViewById(R.id.star_date2);
-                        TextView to=vi.findViewById(R.id.end_date2);
-                        TextView workstate=vi.findViewById(R.id.tv_status_present);
-                        Button ok=vi.findViewById(R.id.dialogButtonOk);
+                        final TextView Nationality_Number = vi.findViewById(R.id.tv_Nationality_Number);
+                        TextView Request_Date=vi.findViewById(R.id.tv_Request_Date);
+                        TextView Service_Price=vi.findViewById(R.id.tv_Service_Price);
+                        TextView Payment_Status=vi.findViewById(R.id.tv_Payment_Status);
 
-                        final TextView acceptedPeople=vi.findViewById(R.id.tv_personnum_present);
+                        Button Accept=vi.findViewById(R.id.dialogButtonAccept);
+                        Button Reject=vi.findViewById(R.id.dialogButtonReject);
+
 
                         final FirebaseAuth auth=FirebaseAuth.getInstance();
 
                         final AlertDialog dialog = builder.create();
                         dialog.show();
                         if(!mRequestsList.get(position).Nationality_Number.equals("")){
-                            user.setText(mRequestsList.get(position).Nationality_Number);
+                            Nationality_Number.setText(mRequestsList.get(position).Nationality_Number);
                         }else{
-                            user.setText("لم تقم بادخال الرقم الوطني عند التقديم");
+                            Nationality_Number.setText("غير مدخل");
 
                         }
-                        if(!mRequestsList.get(position).Replay_Date.equals("")){
-                            phone.setText(mRequestsList.get(position).Replay_Date);
-                        }else{
-                            phone.setText("لم يتم الرد بعد");
-                        }
-                        title.setText(mRequestsList.get(position).Service_Price);
-                        if(mRequestsList.get(position).Service_Status.equals("0")){
-                            disc.setText("قيد الاجراء");
-                        }else if(mRequestsList.get(position).Service_Status.equals("1")){
-                            disc.setText("تم القبول مع انتظار الدفع للاصدار");
-                        }else if(mRequestsList.get(position).Service_Status.equals("2")){
-                            disc.setText("تم القبول و الاصدار");
-                        }
+
+                        Service_Price.setText(mRequestsList.get(position).Service_Price);
+//                        if(mRequestsList.get(position).Service_Status.equals("0")){
+//                            Service_Status.setText("قيد الاجراء");
+//                        }else if(mRequestsList.get(position).Service_Status.equals("1")){
+//                            Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
+//                        }else if(mRequestsList.get(position).Service_Status.equals("2")){
+//                            Service_Status.setText("تم القبول و الاصدار");
+//                        }
                         if(mRequestsList.get(position).Payment_Status.equals("0")){
-                            from.setText("الرصيد غير كافي");
+                            Payment_Status.setText("الرصيد غير كافي");
                         }else if(mRequestsList.get(position).Payment_Status.equals("1")){
-                            from.setText("تم الدفع");
+                            Payment_Status.setText("تم الدفع");
                         }
 
-                        ok.setOnClickListener(new View.OnClickListener() {
+                        Accept.setOnClickListener(new View.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(View v) {
-                                dialog.dismiss();
+                                dialog.show();
+
+                                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+
+                                String Service_Status = "" ;
+                                if(mRequestsList.get(position).Payment_Status.equals("0")) {
+                                    Service_Status = "1";
+                                }else if(mRequestsList.get(position).Payment_Status.equals("1")) {
+                                    Service_Status = "2";
+                                }
+
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("Replay_Date", date);
+                                map.put("Service_Status", Service_Status);
+
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                db.collection("PendingService").document(mRequestsList.get(position).id)
+                                        .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        dialog.dismiss();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(mContext, "تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                dialog.dismiss();
+                                                Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+
+                            }
+                        });
+
+
+                        Reject.setOnClickListener(new View.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.N)
+                            @Override
+                            public void onClick(View v) {
+                                dialog.show();
+
+                                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("Replay_Date", date);
+                                map.put("Service_Status", 3);
+
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                db.collection("PendingService").document(mRequestsList.get(position).id)
+                                        .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        dialog.dismiss();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(mContext, "تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                dialog.dismiss();
+                                                Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+
                             }
                         });
                     }
+
                 });
             }
         });
@@ -117,7 +199,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 class AdminRequestViewHolder extends RecyclerView.ViewHolder{
 
     ImageView mImage;
-    TextView tvReqTitle,tvReqDate;
+    TextView tvReqTitle, tvReqDate, tvUserName;
     CardView mCardView;
 
     AdminRequestViewHolder(View itemView) {
@@ -126,6 +208,7 @@ class AdminRequestViewHolder extends RecyclerView.ViewHolder{
 
         tvReqTitle = itemView.findViewById(R.id.tvReqTitle);
         tvReqDate = itemView.findViewById(R.id.tvReqDate);
+        tvUserName = itemView.findViewById(R.id.tvUserName);
         mCardView = itemView.findViewById(R.id.cardview);
 
 

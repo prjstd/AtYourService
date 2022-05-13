@@ -105,6 +105,8 @@ public class ProfileActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(ProfileActivity.this, "تم تعديل بياناتك بنجاح", Toast.LENGTH_SHORT).show();
+                                editRel.setVisibility(View.VISIBLE);
+                                saveRel.setVisibility(View.GONE);
                                 SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
                                 editor.putString("Full-Name", name_ed.getText().toString());
                                 editor.putString("Email", email_ed.getText().toString());
@@ -117,6 +119,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(ProfileActivity.this, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
+                                    editRel.setVisibility(View.VISIBLE);
+                                    saveRel.setVisibility(View.GONE);
                                 }
                             });
 

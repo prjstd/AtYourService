@@ -57,44 +57,49 @@ public class MyAdapter extends RecyclerView.Adapter<UserHistoryViewHolder>{
                         vi = inflater.inflate(R.layout.user_history_info_dialog, null);
                         builder.setView(vi);
 
-                        final TextView user = vi.findViewById(R.id.tv_userpresent);
-                        TextView phone=vi.findViewById(R.id.tv_phone_present);
-                        TextView title=vi.findViewById(R.id.tv_title_present);
-                        TextView disc=vi.findViewById(R.id.tv_disc_present);
-                        TextView from=vi.findViewById(R.id.star_date2);
-                        TextView to=vi.findViewById(R.id.end_date2);
-                        TextView workstate=vi.findViewById(R.id.tv_status_present);
+                        final TextView Nationality_Number = vi.findViewById(R.id.tv_Nationality_Number);
+                        TextView Request_Date=vi.findViewById(R.id.tv_Request_Date);
+                        TextView Replay_Date=vi.findViewById(R.id.tv_Replay_Date);
+                        TextView Service_Status=vi.findViewById(R.id.tv_Service_Status);
+                        TextView Service_Price=vi.findViewById(R.id.tv_Service_Price);
+                        TextView Payment_Status=vi.findViewById(R.id.tv_Payment_Status);
+
                         Button ok=vi.findViewById(R.id.dialogButtonOk);
 
-                        final TextView acceptedPeople=vi.findViewById(R.id.tv_personnum_present);
 
                         final FirebaseAuth auth=FirebaseAuth.getInstance();
 
                         final AlertDialog dialog = builder.create();
                         dialog.show();
                         if(!mHistoryList.get(position).Nationality_Number.equals("")){
-                            user.setText(mHistoryList.get(position).Nationality_Number);
+                            Nationality_Number.setText(mHistoryList.get(position).Nationality_Number);
                         }else{
-                            user.setText("لم تقم بادخال الرقم الوطني عند التقديم");
+                            Nationality_Number.setText("لم تقم بادخال الرقم الوطني عند التقديم");
 
                         }
+
+                        Request_Date.setText(mHistoryList.get(position).Request_Date);
+
                         if(!mHistoryList.get(position).Replay_Date.equals("")){
-                            phone.setText(mHistoryList.get(position).Replay_Date);
+                            Replay_Date.setText(mHistoryList.get(position).Replay_Date);
                         }else{
-                            phone.setText("لم يتم الرد بعد");
+                            Replay_Date.setText("لم يتم الرد بعد");
                         }
-                        title.setText(mHistoryList.get(position).Service_Price);
+                        Service_Price.setText(mHistoryList.get(position).Service_Price);
+
                         if(mHistoryList.get(position).Service_Status.equals("0")){
-                            disc.setText("قيد الاجراء");
+                            Service_Status.setText("قيد الاجراء");
                         }else if(mHistoryList.get(position).Service_Status.equals("1")){
-                            disc.setText("تم القبول مع انتظار الدفع للاصدار");
+                            Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
                         }else if(mHistoryList.get(position).Service_Status.equals("2")){
-                            disc.setText("تم القبول و الاصدار");
+                            Service_Status.setText("تم القبول و الاصدار");
+                        }else if(mHistoryList.get(position).Service_Status.equals("3")){
+                            Service_Status.setText("الطلب مرفوض");
                         }
                         if(mHistoryList.get(position).Payment_Status.equals("0")){
-                            from.setText("الرصيد غير كافي");
+                            Payment_Status.setText("الرصيد غير كافي");
                         }else if(mHistoryList.get(position).Payment_Status.equals("1")){
-                            from.setText("تم الدفع");
+                            Payment_Status.setText("تم الدفع");
                         }
 
                         ok.setOnClickListener(new View.OnClickListener() {

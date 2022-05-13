@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/boardershape">
+    android:background="@drawable/boardershape"
+    android:layoutDirection="rtl">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -40,18 +41,7 @@
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_Nationality_Number"
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:textColor="#000000"
-                    android:background="@drawable/shape"
-                    android:text="الرقم الوطني"
-                    android:textSize="18dp" />
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -63,6 +53,18 @@
                     android:layout_height="match_parent"
                     android:textStyle="bold"
                     android:layout_weight="1"
+                    android:text="الرقم الوطني"
+                    android:textSize="18dp" />
+                <TextView
+                    android:id="@+id/tv_Nationality_Number"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/shape"
                     android:text="الرقم الوطني"
                     android:textSize="18dp" />
 
@@ -82,19 +84,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_Request_Date"
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:background="@drawable/shape"
-                    android:text="تاريخ التقديم"
-                    android:textSize="18dp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
                     android:textColor="#ffffff"
@@ -106,7 +95,18 @@
                     android:layout_weight="1"
                     android:text="تاريخ التقديم"
                     android:textSize="18dp" />
-
+                <TextView
+                    android:id="@+id/tv_Request_Date"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/shape"
+                    android:text="تاريخ التقديم"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -124,19 +124,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_Replay_Date"
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:background="@drawable/shape"
-                    android:text="تاريخ القبول"
-                    android:textSize="18dp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
                     android:textColor="#ffffff"
@@ -146,8 +133,21 @@
                     android:layout_height="match_parent"
                     android:textStyle="bold"
                     android:layout_weight="1"
-                    android:text="تاريخ القبول"
+                    android:text="سعر الخدمة"
                     android:textSize="18dp" />
+                <TextView
+                    android:id="@+id/tv_Service_Price"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:background="@drawable/shape"
+                    android:text="سعر الخدمة"
+                    android:textSize="18dp" />
+
 
             </LinearLayout>
 
@@ -166,19 +166,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_Service_Price"
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:background="@drawable/shape"
-                    android:text="سعر الخدمة"
-                    android:textSize="18dp" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
                     android:textColor="#ffffff"
@@ -188,67 +175,8 @@
                     android:layout_height="match_parent"
                     android:textStyle="bold"
                     android:layout_weight="1"
-                    android:text="سعر الخدمة"
+                    android:text="حالة الدفع"
                     android:textSize="18dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_centerHorizontal="true"
-                android:weightSum="2"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:id="@+id/fifth"
-                android:layout_below="@+id/fourth"
-                android:orientation="horizontal"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_Service_Status"
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:paddingRight="5dp"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:background="@drawable/shape"
-                    android:text="حالة الطلب"
-                    android:textSize="18dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:textColor="#ffffff"
-                    android:background="@color/orange"
-                    android:padding="5dp"
-                    android:paddingRight="5dp"
-                    android:layout_height="match_parent"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:text="حالة الطلب"
-                    android:textSize="18dp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_centerHorizontal="true"
-                android:weightSum="2"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:id="@+id/sixth"
-                android:layout_below="@+id/fifth"
-                android:orientation="horizontal"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/tv_Payment_Status"
                     android:layout_width="match_parent"
@@ -262,19 +190,6 @@
                     android:text="حالة الدفع "
                     android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:gravity="right"
-                    android:textColor="#ffffff"
-                    android:background="@color/orange"
-                    android:padding="5dp"
-                    android:paddingRight="5dp"
-                    android:layout_height="match_parent"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:text="حالة الدفع"
-                    android:textSize="18dp" />
-
             </LinearLayout>
 
         </RelativeLayout>
@@ -284,7 +199,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_centerHorizontal="true"
-        android:weightSum="3"
+        android:weightSum="2"
         android:layout_marginLeft="2dp"
         android:layout_below="@+id/scroll"
         android:layout_marginRight="2dp"
@@ -293,19 +208,34 @@
         android:id="@+id/tenth"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
-
+        android:layout_marginBottom="10dp"
+        android:layoutDirection="rtl">
 
         <Button
-            android:id="@+id/dialogButtonOk"
+            android:id="@+id/dialogButtonAccept"
             android:layout_width="0dp"
             android:textStyle="bold"
             android:layout_height="40dp"
-            android:text="حسنا"
+            android:text="قبول"
             android:layout_gravity="center"
             android:textSize="16dp"
             android:background="@drawable/shape2"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:id="@+id/dialogButtonReject"
+            android:layout_width="0dp"
+            android:textStyle="bold"
+            android:layout_height="40dp"
+            android:text="رفض"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:background="@drawable/shape2"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"/>
 
 
 

@@ -45,12 +45,14 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
     }
 
     private void GetData() {
+        try{
+
         mRequestsList.clear();
         pb.show();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("ServicePrice")
-                .whereEqualTo("id", "flagService")
+        db.collection("PendingService")
+                .whereEqualTo("Service_Name", "خدمة علم")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -60,12 +62,14 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
 
                 for(int i=0; i<gr.size(); i++) {
                     if(gr.get(i).getString("Service_Status").equals("0")){
-                        mRequestsList.add(gr.get(i).toObject(PendingServices.class));
+                        mRequestsList.add(gr.get(i).toObject(PendingServices.class));//الطلبات يلي قيد الاجراء
                     }
                 }
                 AdminMyAdapter adminMyAdapter = new AdminMyAdapter(getApplicationContext(), mRequestsList);
                 mRecyclerView.setAdapter(adminMyAdapter);
+                //mRecyclerView.notifyAll();
             }
         });
+        }catch (Exception ex){}
     }
 }

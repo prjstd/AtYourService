@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.text.SimpleDateFormat;
@@ -26,6 +27,7 @@ import com.example.atyourservice.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -53,6 +55,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
         Init();
         GetData();
         Listners();
+
     }
     private void Init() {
         pb = new ProgressDialog(this);
@@ -69,7 +72,9 @@ public class UserFlagServiceActivity extends AppCompatActivity {
         fullNameField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full-Name", ""));
         emailField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Email", ""));
         balanceField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Ballance", ""));
-        //Services = new ArrayList<>();
+        if(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("service","").contains("F")){
+            btnReguest.setEnabled(false);
+        }
     }
     private void GetData(){
 
@@ -107,26 +112,41 @@ public class UserFlagServiceActivity extends AppCompatActivity {
 //                    Toast.makeText(UserFlagServiceActivity.this, " ادخل الرقم الوطني من فضلك", Toast.LENGTH_SHORT).show();
 //                    return;
 //                }
+                String Payment_Status = "1";
                 if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
+                    Payment_Status = "0";
                     Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
                 }
 
                 String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                DocumentReference df = db.collection("PendingService").document();
+                String id =df.getId();
+
                 Map<String, String> map = new HashMap<>();
+                map.put("id", id);
                 map.put("Service_Name", serviceTypeField.getText().toString());
                 map.put("User_id", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Uid", ""));
+                map.put("Full_Name", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full_Name", ""));
                 map.put("Nationality_Number", nationalNumField.getText().toString());
                 map.put("Request_Date", date);
                 map.put("Replay_Date", "");
                 map.put("Service_Status", "0");
-                map.put("Payment_Status", "0");
+                map.put("Payment_Status", Payment_Status);
                 map.put("Service_Price", servicePriceField.getText().toString());
 
-                FirebaseFirestore.getInstance().collection("PendingService").document().set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                df.set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             pb.dismiss();
+                            btnReguest.setEnabled(false);
+
+                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+                            editor.putString("service", "F");
+                            editor.apply();
 
                             final AlertDialog.Builder builder = new AlertDialog.Builder((UserFlagServiceActivity.this));
                             LayoutInflater inflater = (UserFlagServiceActivity.this).getLayoutInflater();
@@ -147,6 +167,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
                                     startActivity(new Intent(UserFlagServiceActivity.this,HomeActivity.class));
+
                                 }
                             });
                         }
