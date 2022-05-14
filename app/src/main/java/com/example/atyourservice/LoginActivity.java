@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putString("Email", documentSnapshot.getString("Email"));
                                             editor.putString("Password", documentSnapshot.getString("Password"));
                                             editor.putString("Ballance", documentSnapshot.getString("Ballance"));
-                                            if(email.contains("@admin") || email.contains("@Admin")) {
+                                            if(email.contains("@admin") || email.contains("@Admin") || email.contains("@ADMIN") ) {
                                                 editor.putString("type", "Admin");
                                             }else{
                                                 editor.putString("type", "");

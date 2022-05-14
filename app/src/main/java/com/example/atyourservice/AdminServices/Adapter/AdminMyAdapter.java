@@ -46,7 +46,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 
     @Override
     public AdminRequestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_usereq_history, parent, false);
+        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_adminreq_services, parent, false);
 
         return new AdminRequestViewHolder(mView);
     }
@@ -55,7 +55,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
     @Override
     public void onBindViewHolder(AdminRequestViewHolder holder, int position) {
         holder.tvReqTitle.setText("الخدمة: "+mRequestsList.get(position).Service_Name);
-        holder.tvUserName.setText("المقدم:"+mRequestsList.get(position).Full_Name);
+        holder.tvUserName.setText("المقدم: "+mRequestsList.get(position).Full_Name);
         holder.tvReqDate.setText("تاريخ التقديم: "+mRequestsList.get(position).Request_Date);
 
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +90,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                             Nationality_Number.setText("غير مدخل");
 
                         }
+                        Request_Date.setText(mRequestsList.get(position).Request_Date);
 
                         Service_Price.setText(mRequestsList.get(position).Service_Price);
 //                        if(mRequestsList.get(position).Service_Status.equals("0")){

@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.atyourservice.Home.Activities.ProfileActivity;
 import com.example.atyourservice.UserServices.Class.Services;
 import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.example.atyourservice.R;
@@ -42,7 +43,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
 
     EditText fullNameField, emailField, nationalNumField,serviceTypeField, servicePriceField, balanceField;
     Button btnReguest;
-    //ArrayList<Services> Services;
     Services srv;
     ProgressDialog pb;
 
@@ -72,50 +72,73 @@ public class UserFlagServiceActivity extends AppCompatActivity {
         fullNameField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full-Name", ""));
         emailField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Email", ""));
         balanceField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Ballance", ""));
-        if(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("service","").contains("F")){
-            btnReguest.setEnabled(false);
-        }
+//        if(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("service","").contains("F")){
+//            btnReguest.setEnabled(false);
+//        }
     }
     private void GetData(){
 
-        pb.show();
+        try{
+            pb.show();
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("ServicePrice")
-//                .whereEqualTo("user_id", "asd")
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                pb.dismiss();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("ServicePrice")
+                    .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    pb.dismiss();
 
-                List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
-//                ArrayList<Users>test=new ArrayList<>();
+                    List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
-                for(int i=0; i<gr.size(); i++) {
+                    for(int i=0; i<gr.size(); i++) {
 //                    test.add(gr.get(0).toObject(Users.class));
-                    if(gr.get(i).getString("id").equals("flagService")){
-                      srv = new Services(gr.get(i).getString("name").toString(),gr.get(i).getString("price").toString());
+                        if(gr.get(i).getString("id").equals("flagService")){
+                            srv = new Services(gr.get(i).getString("name").toString(),gr.get(i).getString("price").toString());
+                        }
                     }
+                    serviceTypeField.setText(srv.type);
+                    servicePriceField.setText(srv.price);
                 }
-                serviceTypeField.setText(srv.type);
-                servicePriceField.setText(srv.price);
-            }
-        });
+            });
+        }catch(Exception ex){}
+
     }
     private void Listners() {
         btnReguest.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+
                 pb.show();
 //                if(nationalNumField.getText().equals("")){
 //                    Toast.makeText(UserFlagServiceActivity.this, " ادخل الرقم الوطني من فضلك", Toast.LENGTH_SHORT).show();
 //                    return;
 //                }
-                String Payment_Status = "1";
+                String Payment_Status = "";
                 if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                     Payment_Status = "0";
                     Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
+                }else{
+                     Payment_Status = "1";
+                    Double blnc = Double.parseDouble(balanceField.getText().toString()) - Double.parseDouble(servicePriceField.getText().toString());
+
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("Ballance", String.valueOf(blnc));
+
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("Users").document(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Uid", ""))
+                            .update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+                                editor.putString("Ballance", String.valueOf(blnc));
+                                editor.apply();
+                            }
+                        }
+                    });
+
+
                 }
 
                 String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
@@ -129,7 +152,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                 map.put("id", id);
                 map.put("Service_Name", serviceTypeField.getText().toString());
                 map.put("User_id", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Uid", ""));
-                map.put("Full-Name", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full-Name", ""));
+                map.put("Full_Name", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full-Name", ""));
                 map.put("Nationality_Number", nationalNumField.getText().toString());
                 map.put("Request_Date", date);
                 map.put("Replay_Date", "");
@@ -144,9 +167,9 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                             pb.dismiss();
                             btnReguest.setEnabled(false);
 
-                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
-                            editor.putString("service", "F");
-                            editor.apply();
+//                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+//                            editor.putString("service", "F");
+//                            editor.apply();
 
                             final AlertDialog.Builder builder = new AlertDialog.Builder((UserFlagServiceActivity.this));
                             LayoutInflater inflater = (UserFlagServiceActivity.this).getLayoutInflater();

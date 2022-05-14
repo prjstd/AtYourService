@@ -25,6 +25,9 @@
             android:name=".AdminServices.Activities.AdminFlagServiceActivity"
             android:exported="false" />
         <activity
+            android:name=".AdminServices.Activities.AdminNonPayPendingActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserServices.Activiteis.UserFlagServiceActivity"
             android:exported="false" />
         <activity

@@ -10,6 +10,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminNonPayPendingActivity;
 import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.example.atyourservice.Home.Adapter.HomeAdapter;
 import com.example.atyourservice.R;
@@ -119,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 5:
                         if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminNonPayPendingActivity.class));
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserHistoryRequestsActivity.class));

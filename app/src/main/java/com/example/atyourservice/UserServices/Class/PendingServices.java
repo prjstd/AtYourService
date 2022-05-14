@@ -15,5 +15,9 @@ public class PendingServices {
         Payment_Status = payment_Status;
         Service_Price = service_Price;
     }
-    public PendingServices(){}
+    public PendingServices(){
+
+    }
+
+
 }

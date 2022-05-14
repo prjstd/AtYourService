@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent"
@@ -19,16 +19,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:background="@drawable/btn_back5"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="65dp"
+                android:layout_width="70dp"
                 android:id="@+id/im"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:src="@mipmap/ic_launcher"
                 android:layout_centerHorizontal="true"
                 android:backgroundTint="@color/colorPrimaryDark"
-                android:layout_height="65dp" />
+                android:layout_height="70dp" />
 
             <TextView
                 android:id="@+id/textView"
@@ -37,13 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textStyle="bold"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="8dp"
                 android:layout_below="@+id/im"
                 android:textColor="@color/orange"
-                android:text="Group Name"
-                android:textSize="14dp" />
+                android:text="Service Name"
+                android:textSize="15dp" />
 
         </RelativeLayout>
 

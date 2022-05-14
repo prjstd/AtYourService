@@ -5,9 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.atyourservice.AdminServices.Adapter.AdminMyAdapter;
+import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.example.atyourservice.UserServices.Class.PendingServices;
 import com.example.atyourservice.Home.Adapter.MyAdapter;
 import com.example.atyourservice.R;
@@ -24,6 +28,15 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     ArrayList<PendingServices> mRequestsList;
     ProgressDialog pb;
+    TextView noData;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(AdminFlagServiceActivity.this, HomeActivity.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +51,7 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
         pb = new ProgressDialog(this);
         pb.setTitle("يرجى الانتظار !");
         pb.setMessage("جاري التحميل...");
+        noData = findViewById(R.id.noData);
         mRequestsList  =new ArrayList<>();
         mRecyclerView = findViewById(R.id.recyclerview);
         final GridLayoutManager mGridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
@@ -67,11 +81,18 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
                         mRequestsList.add(gr.get(i).toObject(PendingServices.class));//الطلبات يلي قيد الاجراء
                     }
                 }
-                AdminMyAdapter adminMyAdapter = new AdminMyAdapter(getApplicationContext(), mRequestsList);
-                mRecyclerView.setAdapter(adminMyAdapter);
-                //mRecyclerView.notifyAll();
+
+                if(!mRequestsList.isEmpty()){
+                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminFlagServiceActivity.this, mRequestsList);
+                    mRecyclerView.setAdapter(adminMyAdapter);
+                }else{
+                    noData.setVisibility(View.VISIBLE);
+                }
+
             }
         });
+            mRecyclerView.notifyAll();
+
         }catch (Exception ex){}
     }
 }
