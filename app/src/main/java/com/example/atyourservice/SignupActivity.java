@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -92,7 +93,7 @@ public class SignupActivity extends AppCompatActivity {
                                 map.put("Full-Name", fullname);
                                 map.put("Email", email);
                                 map.put("Password", password);
-                                map.put("Ballance","");
+                                map.put("Ballance",ballance);
                                 FirebaseFirestore db= FirebaseFirestore.getInstance();
                                 db.collection("Users")
                                         .document(auth.getCurrentUser().getUid())
@@ -102,7 +103,7 @@ public class SignupActivity extends AppCompatActivity {
                                         if(task.isSuccessful()){
                                             pb.dismiss();
                                             Toast.makeText(SignupActivity.this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                             finish();
                                         }
                                     }

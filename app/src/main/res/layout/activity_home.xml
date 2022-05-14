@@ -50,7 +50,7 @@
             android:cacheColorHint="@android:color/transparent"
             android:divider="@color/transperant"
             android:horizontalSpacing="5dp"
-            android:numColumns="3"
+            android:numColumns="2"
             android:verticalSpacing="35dp" />
 
     </RelativeLayout>

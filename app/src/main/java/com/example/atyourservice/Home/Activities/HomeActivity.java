@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
 import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.example.atyourservice.Home.Adapter.HomeAdapter;
 import com.example.atyourservice.R;
+import com.example.atyourservice.UserServices.Activiteis.UserHistoryRequestsActivity;
 
 import java.util.ArrayList;
 
@@ -22,8 +24,16 @@ public class HomeActivity extends AppCompatActivity {
     GridView listView;
     HomeAdapter adapter;
     boolean flag = false;
+    int BackCounter = 0;
 
 
+    @Override
+    public void onBackPressed() {
+
+        if(++BackCounter != 2)
+            Toast.makeText(this, "اضغط مرة ثانية للخروج", Toast.LENGTH_SHORT).show();
+        else
+            super.onBackPressed(); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +88,41 @@ public class HomeActivity extends AppCompatActivity {
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                        }
+                        break;
+                    case 1:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                        }
+                        break;
+                    case 2:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                        }
+                        break;
+                    case 3:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                        }
+                        break;
+                    case 4:
+                        startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                        break;
+                    case 5:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserHistoryRequestsActivity.class));
                         }
                         break;
                 }

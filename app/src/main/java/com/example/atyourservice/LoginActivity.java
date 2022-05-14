@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
-//        if (auth.getCurrentUser() != null) {
-//            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//            finish(); }
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish(); }
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -90,15 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if (!task.isSuccessful()) {
-                                    if (password.length() < 6) {
-                                        pb.dismiss();
-                                        inputPassword.setError(getString(R.string.minimum_password));
-                                    } else {
-                                        pb.dismiss();
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-                                    }
-                                } else {
+                                if (task.isSuccessful()) {
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                     db.collection("Users")
                                             .document(auth.getCurrentUser().getUid())
@@ -119,12 +113,23 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.apply();
 
                                             pb.dismiss();
-                                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                                             finish();
 
                                         }
                                     });
 
+
+
+                                } else {
+
+                                    if (password.length() < 6) {
+                                        pb.dismiss();
+                                        inputPassword.setError(getString(R.string.minimum_password));
+                                    } else {
+                                        pb.dismiss();
+                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }
                         });

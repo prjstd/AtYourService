@@ -47,12 +47,14 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
     private void GetData() {
         try{
 
-        mRequestsList.clear();
+            if(!mRequestsList.isEmpty())
+                mRequestsList.clear();
+
         pb.show();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("PendingService")
-                .whereEqualTo("Service_Name", "خدمة علم")
+                .whereEqualTo("Service_Name", "خدمة العلم")
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

@@ -129,7 +129,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                 map.put("id", id);
                 map.put("Service_Name", serviceTypeField.getText().toString());
                 map.put("User_id", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Uid", ""));
-                map.put("Full_Name", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full_Name", ""));
+                map.put("Full-Name", getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Full-Name", ""));
                 map.put("Nationality_Number", nationalNumField.getText().toString());
                 map.put("Request_Date", date);
                 map.put("Replay_Date", "");
