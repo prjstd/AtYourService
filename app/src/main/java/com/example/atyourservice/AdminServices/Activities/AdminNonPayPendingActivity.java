@@ -76,7 +76,7 @@ public class AdminNonPayPendingActivity extends AppCompatActivity {
                 List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
                 for(int i=0; i<gr.size(); i++) {
-                    if(gr.get(i).getString("Service_Status").equals("0")){
+                    if(gr.get(i).getString("Service_Status").equals("0") && gr.get(i).getString("Payment_Status").equals("0")){
                         mRequestsList.add(gr.get(i).toObject(PendingServices.class));//الطلبات غير المدفوعة
                     }
                 }

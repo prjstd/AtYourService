@@ -53,6 +53,7 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
         pb.setMessage("جاري التحميل...");
         noData = findViewById(R.id.noData);
         mRequestsList  =new ArrayList<>();
+        mRequestsList.clear();
         mRecyclerView = findViewById(R.id.recyclerview);
         final GridLayoutManager mGridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
@@ -73,12 +74,12 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 pb.dismiss();
-
+                mRequestsList.clear();
                 List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
                 for(int i=0; i<gr.size(); i++) {
-                    if(gr.get(i).getString("Service_Status").equals("0")){
-                        mRequestsList.add(gr.get(i).toObject(PendingServices.class));//الطلبات يلي قيد الاجراء
+                    if(gr.get(i).getString("Service_Status").equals("0") && gr.get(i).getString("Payment_Status").equals("1")){
+                        mRequestsList.add(gr.get(i).toObject(PendingServices.class));// و مدفوعة الطلبات يلي قيد الاجراء
                     }
                 }
 

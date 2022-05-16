@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.atyourservice.Home.Activities.ProfileActivity;
@@ -45,7 +46,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
     Button btnReguest;
     Services srv;
     ProgressDialog pb;
-
+    String msg="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,14 +111,18 @@ public class UserFlagServiceActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 pb.show();
-//                if(nationalNumField.getText().equals("")){
-//                    Toast.makeText(UserFlagServiceActivity.this, " ادخل الرقم الوطني من فضلك", Toast.LENGTH_SHORT).show();
-//                    return;
+//                if(!nationalNumField.getText().equals("")){
+//                    if(nationalNumField.length()<10){
+//                        pb.dismiss();
+//                        Toast.makeText(UserFlagServiceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
 //                }
                 String Payment_Status = "";
                 if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                     Payment_Status = "0";
-                    Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
+                    msg="رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا";
                 }else{
                      Payment_Status = "1";
                     Double blnc = Double.parseDouble(balanceField.getText().toString()) - Double.parseDouble(servicePriceField.getText().toString());
@@ -184,7 +189,8 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                             dialog2.show();
                             dialog2.getWindow().setAttributes(lp);
                             dialog2.setCanceledOnTouchOutside(true);
-
+                            TextView txtBody = dialog2.findViewById(R.id.txtBody);
+                            txtBody.setText(txtBody.getText()+"\n"+ msg);
                             Button btnOk = dialog2.findViewById(R.id.btnOk);
                             btnOk.setOnClickListener(new View.OnClickListener() {
                                 @Override

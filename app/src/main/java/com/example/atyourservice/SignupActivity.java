@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,6 +28,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword,Ballance,fullName;
     private Button btnSignIn, btnSignUp, btnResetPassword;
+    FirebaseAuth auth;
 
     ProgressDialog pb;
     @Override
@@ -42,9 +44,11 @@ public class SignupActivity extends AppCompatActivity {
         Ballance=(EditText) findViewById(R.id.BallanceField);
         fullName=(EditText) findViewById(R.id.fullNameField);
         btnResetPassword = findViewById(R.id.btn_reset_password);
+        auth  = FirebaseAuth.getInstance();
         pb = new ProgressDialog(this);
         pb.setTitle("يرجى الانتظار !");
         pb.setMessage("جاري التحميل...");
+
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,60 +70,69 @@ public class SignupActivity extends AppCompatActivity {
 
                 pb.show();
 
-                final String email = inputEmail.getText().toString().trim();
-                final String password = inputPassword.getText().toString().trim();
-                final String ballance = Ballance.getText().toString().trim();
-                final String fullname= fullName.getText().toString().trim();
+                 String email = inputEmail.getText().toString().trim();
+                 String password = inputPassword.getText().toString().trim();
+                 String ballance = Ballance.getText().toString().trim();
+                 String fullname= fullName.getText().toString().trim();
 
                 if(email.equals("") || password.equals("") || fullname.equals("") || ballance.equals("")){
                     Toast.makeText(SignupActivity.this, "رجاءا املئ كامل البيانات", Toast.LENGTH_SHORT).show();
                     pb.dismiss();
-                } else {
 
-                    final FirebaseAuth auth = FirebaseAuth.getInstance();
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,new OnCompleteListener<AuthResult>() {
+                }else if(!email.contains(".com") && !email.contains("@") && email.length()<7) {
+                    Toast.makeText(SignupActivity.this, "الرجاء ادخال ايميل صحيح", Toast.LENGTH_SHORT).show();
+                    pb.dismiss();
+                } else {
+                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            // Toast.makeText(SignupActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-
-                            if (!task.isSuccessful()) {
+                            if (task.isSuccessful()) {
+                                RegUserAcc(email, password, ballance, fullname);
+                            }
+                            else {
                                 task.getException().getMessage();
                                 Toast.makeText(SignupActivity.this, " عملية التسجيل لم تكتمل..حاول مرة اخرى : " +task.getException().getMessage() , Toast.LENGTH_SHORT).show();
                                 pb.dismiss();
                             }
-                            else {
-                                Map<String, String> map = new HashMap<>();
-                                map.put("Uid", auth.getCurrentUser().getUid());
-                                map.put("Full-Name", fullname);
-                                map.put("Email", email);
-                                map.put("Password", password);
-                                map.put("Ballance",ballance);
-                                FirebaseFirestore db= FirebaseFirestore.getInstance();
-                                db.collection("Users")
-                                        .document(auth.getCurrentUser().getUid())
-                                        .set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()){
-                                            pb.dismiss();
-                                            Toast.makeText(SignupActivity.this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                                            finish();
-                                        }
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        pb.dismiss();
-                                        Toast.makeText(SignupActivity.this, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
-
-                                    }
-                                });
-                            } }
+                        }
                     });
                 }
 
+            }
+
+            private void RegUserAcc(String email, String password, String ballance, String fullname) {
+                Map<String, String> map = new HashMap<>();
+                map.put("Uid", auth.getCurrentUser().getUid());
+                map.put("Full-Name", fullname);
+                map.put("Email", email);
+                map.put("Password", password);
+                map.put("Ballance",ballance);
+                FirebaseFirestore db= FirebaseFirestore.getInstance();
+                db.collection("Users")
+                        .document(auth.getCurrentUser().getUid())
+                        .set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            pb.dismiss();
+                            Toast.makeText(SignupActivity.this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+                            editor.putString("Uid", auth.getCurrentUser().getUid());
+                            editor.putString("Full-Name", fullname);
+                            editor.putString("Email", email);
+                            editor.putString("Password", password);
+                            editor.putString("Ballance", ballance);
+                            if(email.contains("@admin") || email.contains("@Admin") || email.contains("@ADMIN") ) {
+                                editor.putString("type", "Admin");
+                            }else{
+                                editor.putString("type", "");
+                            }
+                            editor.apply();
+                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                            SignupActivity.this.finish();
+                        }
+                    }
+                });
             }
         });
     }

@@ -51,12 +51,11 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
         return new AdminRequestViewHolder(mView);
     }
 
-    @SuppressLint("RecyclerView")
     @Override
-    public void onBindViewHolder(AdminRequestViewHolder holder, int position) {
-        holder.tvReqTitle.setText("الخدمة: "+mRequestsList.get(position).Service_Name);
-        holder.tvUserName.setText("المقدم: "+mRequestsList.get(position).Full_Name);
-        holder.tvReqDate.setText("تاريخ التقديم: "+mRequestsList.get(position).Request_Date);
+    public void onBindViewHolder(AdminRequestViewHolder holder, final int position) {
+        holder.tvReqTitle.setText("الخدمة: "+mRequestsList.get(holder.getBindingAdapterPosition()).Service_Name);
+        holder.tvUserName.setText("المقدم: "+mRequestsList.get(holder.getBindingAdapterPosition()).Full_Name);
+        holder.tvReqDate.setText("تاريخ التقديم: "+mRequestsList.get(holder.getBindingAdapterPosition()).Request_Date);
 
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,25 +83,25 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 
                         final AlertDialog dialog = builder.create();
                         dialog.show();
-                        if(!mRequestsList.get(position).Nationality_Number.equals("")){
-                            Nationality_Number.setText(mRequestsList.get(position).Nationality_Number);
+                        if(!mRequestsList.get(holder.getBindingAdapterPosition()).Nationality_Number.equals("")){
+                            Nationality_Number.setText(mRequestsList.get(holder.getBindingAdapterPosition()).Nationality_Number);
                         }else{
                             Nationality_Number.setText("غير مدخل");
 
                         }
-                        Request_Date.setText(mRequestsList.get(position).Request_Date);
+                        Request_Date.setText(mRequestsList.get(holder.getBindingAdapterPosition()).Request_Date);
 
-                        Service_Price.setText(mRequestsList.get(position).Service_Price);
-//                        if(mRequestsList.get(position).Service_Status.equals("0")){
+                        Service_Price.setText(mRequestsList.get(holder.getBindingAdapterPosition()).Service_Price);
+//                        if(mRequestsList.get(holder.getBindingAdapterPosition()).Service_Status.equals("0")){
 //                            Service_Status.setText("قيد الاجراء");
-//                        }else if(mRequestsList.get(position).Service_Status.equals("1")){
+//                        }else if(mRequestsList.get(holder.getBindingAdapterPosition()).Service_Status.equals("1")){
 //                            Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
-//                        }else if(mRequestsList.get(position).Service_Status.equals("2")){
+//                        }else if(mRequestsList.get(holder.getBindingAdapterPosition()).Service_Status.equals("2")){
 //                            Service_Status.setText("تم القبول و الاصدار");
 //                        }
-                        if(mRequestsList.get(position).Payment_Status.equals("0")){
+                        if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("0")){
                             Payment_Status.setText("الرصيد غير كافي");
-                        }else if(mRequestsList.get(position).Payment_Status.equals("1")){
+                        }else if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("1")){
                             Payment_Status.setText("تم الدفع");
                         }
 
@@ -115,9 +114,9 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                                 String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                                 String Service_Status = "" ;
-                                if(mRequestsList.get(position).Payment_Status.equals("0")) {
+                                if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("0")) {
                                     Service_Status = "1";
-                                }else if(mRequestsList.get(position).Payment_Status.equals("1")) {
+                                }else if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("1")) {
                                     Service_Status = "2";
                                 }
 
@@ -126,7 +125,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                                 map.put("Service_Status", Service_Status);
 
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                db.collection("PendingService").document(mRequestsList.get(position).id)
+                                db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
                                         .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -162,7 +161,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                                 map.put("Service_Status", 3);
 
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                db.collection("PendingService").document(mRequestsList.get(position).id)
+                                db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
                                         .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
