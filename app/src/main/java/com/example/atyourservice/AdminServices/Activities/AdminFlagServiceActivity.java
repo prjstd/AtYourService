@@ -78,13 +78,13 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
                 List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
                 for(int i=0; i<gr.size(); i++) {
-                    if(gr.get(i).getString("Service_Status").equals("0") && gr.get(i).getString("Payment_Status").equals("1")){
+                    if(String.valueOf(gr.get(i).getString("Service_Status")).equals("0") && gr.get(i).getString("Payment_Status").equals("1")){
                         mRequestsList.add(gr.get(i).toObject(PendingServices.class));// و مدفوعة الطلبات يلي قيد الاجراء
                     }
                 }
 
                 if(!mRequestsList.isEmpty()){
-                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminFlagServiceActivity.this, mRequestsList);
+                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminFlagServiceActivity.this, mRequestsList, mRecyclerView);
                     mRecyclerView.setAdapter(adminMyAdapter);
                 }else{
                     noData.setVisibility(View.VISIBLE);
@@ -92,7 +92,6 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
 
             }
         });
-            mRecyclerView.notifyAll();
 
         }catch (Exception ex){}
     }

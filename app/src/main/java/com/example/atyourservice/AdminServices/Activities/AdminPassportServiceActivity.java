@@ -1,14 +1,14 @@
 package com.example.atyourservice.AdminServices.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.atyourservice.AdminServices.Adapter.AdminMyAdapter;
 import com.example.atyourservice.Home.Activities.HomeActivity;
@@ -22,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminNCRCServiceActivity extends AppCompatActivity {
+public class AdminPassportServiceActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     ArrayList<PendingServices> mRequestsList;
     ProgressDialog pb;
@@ -32,13 +32,13 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(AdminNCRCServiceActivity.this, HomeActivity.class));
+        startActivity(new Intent(AdminPassportServiceActivity.this, HomeActivity.class));
         finish();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_ncrcservice);
+        setContentView(R.layout.activity_admin_passportservice);
 
         Init();
         GetData();
@@ -66,7 +66,7 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("PendingService")
-                    .whereEqualTo("Service_Name", "عدم محكومية")
+                    .whereEqualTo("Service_Name", "جواز سفر")
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -81,7 +81,7 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNCRCServiceActivity.this, mRequestsList, mRecyclerView);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminPassportServiceActivity.this, mRequestsList, mRecyclerView);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);

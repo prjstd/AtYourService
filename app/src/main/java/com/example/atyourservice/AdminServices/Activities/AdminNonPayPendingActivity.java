@@ -82,7 +82,7 @@ public class AdminNonPayPendingActivity extends AppCompatActivity {
                 }
 
                 if(!mRequestsList.isEmpty()){
-                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNonPayPendingActivity.this, mRequestsList);
+                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNonPayPendingActivity.this, mRequestsList, mRecyclerView);
                     mRecyclerView.setAdapter(adminMyAdapter);
                 }else{
                     noData.setVisibility(View.VISIBLE);

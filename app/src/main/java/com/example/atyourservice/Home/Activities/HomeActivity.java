@@ -10,11 +10,17 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminIdentityServiceActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminNCRCServiceActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminNonPayPendingActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminPassportServiceActivity;
 import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.example.atyourservice.Home.Adapter.HomeAdapter;
 import com.example.atyourservice.R;
 import com.example.atyourservice.UserServices.Activiteis.UserHistoryRequestsActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserIdentityerviceActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserNCRCServiceActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserPassporterviceActivity;
 
 import java.util.ArrayList;
 
@@ -61,16 +67,20 @@ public class HomeActivity extends AppCompatActivity {
         menu.add(getResources().getString(R.string.main_menu_flag));
         menu.add(getResources().getString(R.string.main_menu_ncrc));
         menu.add(getResources().getString(R.string.main_menu_identity));
+        menu.add(getResources().getString(R.string.main_menu_passport));
         menu.add(getResources().getString(R.string.main_menu_born));
+        menu.add(getResources().getString(R.string.main_menu_drive));
         menu.add(getResources().getString(R.string.main_menu_profile));
         menu.add(getResources().getString(R.string.main_menu_history));
 
-        pics.add(R.drawable.shopping);
+        pics.add(R.drawable.flag);
+        pics.add(R.drawable.ncrc);
+        pics.add(R.drawable.identity);
+        pics.add(R.drawable.passport);
+        pics.add(R.drawable.born);
+        pics.add(R.drawable.carcertificate);
+        pics.add(R.drawable.profile);
         pics.add(R.drawable.note);
-        pics.add(R.drawable.finance);
-        pics.add(R.drawable.plan);
-        pics.add(R.drawable.track);
-        pics.add(R.drawable.social);
 
         listView = findViewById(R.id.listView);
         adapter = new HomeAdapter(HomeActivity.this, menu, pics);
@@ -93,21 +103,29 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 1:
                         if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminNCRCServiceActivity.class));
 
                         }else{
-                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, UserNCRCServiceActivity.class));
                         }
                         break;
                     case 2:
                         if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminIdentityServiceActivity.class));
 
                         }else{
-                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, UserIdentityerviceActivity.class));
                         }
                         break;
                     case 3:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminPassportServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserPassporterviceActivity.class));
+                        }
+                        break;
+                    case 4:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
 
@@ -115,10 +133,18 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
                         }
                         break;
-                    case 4:
+                    case 5:
+                        if(flag){
+                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+
+                        }else{
+                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                        }
+                        break;
+                    case 6:
                         startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
                         break;
-                    case 5:
+                    case 7:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminNonPayPendingActivity.class));
 
@@ -141,27 +167,23 @@ public class HomeActivity extends AppCompatActivity {
 //        spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
 //            @Override
 //            public void onCentreButtonClick() {
-//
 //                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
 //                HomeActivity.this.finish();
-//
 //            }
 //
 //            @Override
 //            public void onItemClick(int itemIndex, String itemName) {
 //
-//                switch (itemName){
-//                    case "Profile" :
-//                            //startActivity(new Intent(HomeActivity.this, ProfileActivity.class);
-//                            HomeActivity.this.finish();
+//                switch (itemIndex){
+//                    case "0" :
+//                            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
 //                        break;
-//                    case "Process" :
+//                    case "1" :
 //                        if(flag){
-//                            startActivity(new Intent(HomeActivity.this, PendingActivity.class);
-//                            HomeActivity.this.finish();
+//                            startActivity(new Intent(HomeActivity.this, AdminNonPayPendingActivity.class));
+//
 //                        }else{
-//                            startActivity(new Intent(HomeActivity.this, ProcessActivity.class);
-//                        HomeActivity.this.finish();
+//                            startActivity(new Intent(HomeActivity.this, UserHistoryRequestsActivity.class));
 //                        }
 //                        break;
 //                }
@@ -170,22 +192,18 @@ public class HomeActivity extends AppCompatActivity {
 //            @Override
 //            public void onItemReselected(int itemIndex, String itemName) {
 //
-//                switch (itemName){
-//                    case "Profile" :
-//                            startActivity(new Intent(HomeActivity.this, ProfileActivity.class);
-//                            HomeActivity.this.finish();
-//
+//                switch (itemIndex){
+//                    case "0" :
+//                            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
 //                        break;
-//                    case "Process" :
-//                        if(flag){
-//                            startActivity(new Intent(HomeActivity.this, PendingActivity.class);
-//                            HomeActivity.this.finish();
+//                    case "1" :
+//                      if(flag){
+//                            startActivity(new Intent(HomeActivity.this, AdminNonPayPendingActivity.class));
+//
 //                        }else{
-//                            startActivity(new Intent(HomeActivity.this, ProcessActivity.class);
-//                            HomeActivity.this.finish();
+//                            startActivity(new Intent(HomeActivity.this, UserHistoryRequestsActivity.class));
 //                        }
 //                        break;
-//            }
 //            }
 //        });
 //    }

@@ -1,8 +1,6 @@
 package com.example.atyourservice.AdminServices.Adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -19,7 +17,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.atyourservice.Home.Activities.ProfileActivity;
 import com.example.atyourservice.R;
 import com.example.atyourservice.UserServices.Class.PendingServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,10 +35,12 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 
     private Context mContext;
     private List<PendingServices> mRequestsList;
+    RecyclerView mRecyclerView;
 
-    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList) {
+    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList, RecyclerView mRecyclerView) {
         this.mContext = mContext;
         this.mRequestsList = mRequestsList;
+        this.mRecyclerView = mRecyclerView;
     }
 
     @Override
@@ -132,6 +131,8 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                                         dialog.dismiss();
                                         if (task.isSuccessful()) {
                                             Toast.makeText(mContext, "تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                            mRecyclerView.notifyAll();
+
                                         }
                                     }
                                 })
@@ -158,7 +159,7 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 
                                 Map<String, Object> map = new HashMap<>();
                                 map.put("Replay_Date", date);
-                                map.put("Service_Status", 3);
+                                map.put("Service_Status", "3");
 
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                                 db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
@@ -168,6 +169,8 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                                         dialog.dismiss();
                                         if (task.isSuccessful()) {
                                             Toast.makeText(mContext, "تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                            mRecyclerView.notifyAll();
+
                                         }
                                     }
                                 })

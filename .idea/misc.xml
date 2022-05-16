@@ -22,7 +22,10 @@
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/whiteEdit.xml" value="0.1595" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/white_boarder.xml" value="0.1595" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_flag_service.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_identityservice.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_ncrcservice.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_nonpaypen_service.xml" value="0.2609375" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_passportservice.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_home.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_profile.xml" value="0.26458333333333334" />
@@ -31,6 +34,9 @@
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_flag_service.xml" value="0.33" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_history_requests.xml" value="0.32751091703056767" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_identity_service.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_ncrc_service.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_user_passport_service.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/admin_request_info_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/recycle_adminreq_services.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/recycle_usereq_history.xml" value="0.36666666666666664" />
