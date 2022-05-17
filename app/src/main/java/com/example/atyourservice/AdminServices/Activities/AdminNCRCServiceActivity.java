@@ -22,7 +22,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Bundle;
+
+import com.example.atyourservice.R;
+
 public class AdminNCRCServiceActivity extends AppCompatActivity {
+
     RecyclerView mRecyclerView;
     ArrayList<PendingServices> mRequestsList;
     ProgressDialog pb;
@@ -35,11 +40,11 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
         startActivity(new Intent(AdminNCRCServiceActivity.this, HomeActivity.class));
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_ncrcservice);
-
         Init();
         GetData();
     }
@@ -81,7 +86,7 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNCRCServiceActivity.this, mRequestsList, mRecyclerView, AdminNCRCServiceActivity.this);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNCRCServiceActivity.this, mRequestsList, AdminNCRCServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);
@@ -89,7 +94,6 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
 
                 }
             });
-            mRecyclerView.notifyAll();
 
         }catch (Exception ex){}
     }

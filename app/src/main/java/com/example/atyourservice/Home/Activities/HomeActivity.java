@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.atyourservice.AdminServices.Activities.AdminBornCertificateActivity;
+import com.example.atyourservice.AdminServices.Activities.AdminDriverLicenceActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminIdentityServiceActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminNCRCServiceActivity;
@@ -142,7 +144,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 4:
                         if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminIdentityServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminBornCertificateActivity.class));
                             HomeActivity.this.finish();
 
                         }else{
@@ -153,10 +155,8 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 5:
                          if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminDriverLicenceActivity.class));
                             HomeActivity.this.finish();
-
-
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserDriveLicenseActivity.class));
                             HomeActivity.this.finish();

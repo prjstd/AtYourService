@@ -21,11 +21,16 @@
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/shape2.xml" value="0.309" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/whiteEdit.xml" value="0.1595" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/drawable/white_boarder.xml" value="0.1595" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_born_certificate.xml" value="0.26296296296296295" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_driver_licence.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_flag_service.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_identity_service.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_identityservice.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_ncrcservice.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_ncrcservice.xml" value="0.2904040404040404" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_ncrcservice2.xml" value="0.26296296296296295" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_nonpaypen_service.xml" value="0.2609375" />
-        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_passportservice.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_passport_service.xml" value="0.26296296296296295" />
+        <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_admin_passportservice.xml" value="0.2904040404040404" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_home.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/elshe/AndroidStudioProjects/AtYourService/app/src/main/res/layout/activity_profile.xml" value="0.26458333333333334" />

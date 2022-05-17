@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminServices.Activities.AdminNCRCServiceActivity">
+    tools:context=".AdminServices.Activities.AdminIdentityServiceActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="عدم محكومية_Admin"
+                android:text="تجديد الهوية_Admin"
                 android:textColor="#ffffff"
                 android:textSize="22dp"
                 android:textStyle="bold" />

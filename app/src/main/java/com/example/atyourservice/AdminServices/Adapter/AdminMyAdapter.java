@@ -37,13 +37,11 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
 
     private Context mContext;
     private List<PendingServices> mRequestsList;
-    RecyclerView mRecyclerView;
     Activity activity;
 
-    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList, RecyclerView mRecyclerView, Activity activity) {
+    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList,  Activity activity) {
         this.mContext = mContext;
         this.mRequestsList = mRequestsList;
-        this.mRecyclerView = mRecyclerView;
         this.activity = activity;
     }
 

@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AtYourService">
         <activity
+            android:name=".AdminServices.Activities.AdminBornCertificateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminServices.Activities.AdminDriverLicenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminServices.Activities.AdminPassportServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminServices.Activities.AdminNCRCServiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminServices.Activities.AdminIdentityServiceActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserServices.Activiteis.UserBornCertificateActivity"
             android:exported="false" />
         <activity
@@ -23,9 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".UserServices.Activiteis.UserDriveLicenseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminServices.Activities.AdminNCRCServiceActivity"
             android:exported="false" />
         <activity
             android:name=".UserServices.Activiteis.UserHistoryRequestsActivity"

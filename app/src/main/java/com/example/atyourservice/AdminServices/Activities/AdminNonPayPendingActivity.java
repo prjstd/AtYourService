@@ -82,7 +82,7 @@ public class AdminNonPayPendingActivity extends AppCompatActivity {
                 }
 
                 if(!mRequestsList.isEmpty()){
-                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNonPayPendingActivity.this, mRequestsList, mRecyclerView, AdminNonPayPendingActivity.this);
+                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNonPayPendingActivity.this, mRequestsList,  AdminNonPayPendingActivity.this);
                     mRecyclerView.setAdapter(adminMyAdapter);
                 }else{
                     noData.setVisibility(View.VISIBLE);
@@ -90,7 +90,6 @@ public class AdminNonPayPendingActivity extends AppCompatActivity {
 
             }
         });
-            mRecyclerView.notifyAll();
 
         }catch (Exception ex){}
     }

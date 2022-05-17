@@ -1,5 +1,11 @@
 package com.example.atyourservice.AdminServices.Activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.atyourservice.R;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +27,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class AdminIdentityServiceActivity extends AppCompatActivity {
+
     RecyclerView mRecyclerView;
     ArrayList<PendingServices> mRequestsList;
     ProgressDialog pb;
@@ -35,14 +41,16 @@ public class AdminIdentityServiceActivity extends AppCompatActivity {
         startActivity(new Intent(AdminIdentityServiceActivity.this, HomeActivity.class));
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_identityservice);
+        setContentView(R.layout.activity_admin_identity_service);
 
         Init();
         GetData();
     }
+
 
     private void Init() {
         pb = new ProgressDialog(this);
@@ -81,7 +89,7 @@ public class AdminIdentityServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminIdentityServiceActivity.this, mRequestsList, mRecyclerView, AdminIdentityServiceActivity.this);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminIdentityServiceActivity.this, mRequestsList,AdminIdentityServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);
@@ -89,7 +97,6 @@ public class AdminIdentityServiceActivity extends AppCompatActivity {
 
                 }
             });
-            mRecyclerView.notifyAll();
 
         }catch (Exception ex){}
     }

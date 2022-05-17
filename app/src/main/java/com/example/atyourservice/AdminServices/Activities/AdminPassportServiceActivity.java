@@ -1,14 +1,18 @@
 package com.example.atyourservice.AdminServices.Activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.atyourservice.R;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.atyourservice.AdminServices.Adapter.AdminMyAdapter;
 import com.example.atyourservice.Home.Activities.HomeActivity;
@@ -38,12 +42,10 @@ public class AdminPassportServiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_passportservice);
-
+        setContentView(R.layout.activity_admin_passport_service);
         Init();
         GetData();
     }
-
     private void Init() {
         pb = new ProgressDialog(this);
         pb.setTitle("يرجى الانتظار !");
@@ -81,7 +83,7 @@ public class AdminPassportServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminPassportServiceActivity.this, mRequestsList, mRecyclerView, AdminPassportServiceActivity.this);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminPassportServiceActivity.this, mRequestsList, AdminPassportServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);
