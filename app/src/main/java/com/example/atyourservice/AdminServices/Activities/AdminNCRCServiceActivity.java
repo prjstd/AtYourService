@@ -81,7 +81,7 @@ public class AdminNCRCServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNCRCServiceActivity.this, mRequestsList, mRecyclerView);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminNCRCServiceActivity.this, mRequestsList, mRecyclerView, AdminNCRCServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);

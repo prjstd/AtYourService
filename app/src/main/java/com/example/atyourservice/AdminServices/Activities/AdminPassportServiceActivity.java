@@ -81,7 +81,7 @@ public class AdminPassportServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminPassportServiceActivity.this, mRequestsList, mRecyclerView);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminPassportServiceActivity.this, mRequestsList, mRecyclerView, AdminPassportServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);

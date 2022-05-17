@@ -81,7 +81,7 @@ public class AdminIdentityServiceActivity extends AppCompatActivity {
                     }
 
                     if(!mRequestsList.isEmpty()){
-                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminIdentityServiceActivity.this, mRequestsList, mRecyclerView);
+                        AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminIdentityServiceActivity.this, mRequestsList, mRecyclerView, AdminIdentityServiceActivity.this);
                         mRecyclerView.setAdapter(adminMyAdapter);
                     }else{
                         noData.setVisibility(View.VISIBLE);

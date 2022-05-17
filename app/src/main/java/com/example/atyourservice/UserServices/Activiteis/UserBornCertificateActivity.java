@@ -1,5 +1,6 @@
 package com.example.atyourservice.UserServices.Activiteis;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -22,10 +23,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.atyourservice.Home.Activities.ProfileActivity;
-import com.example.atyourservice.UserServices.Class.Services;
 import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.example.atyourservice.R;
+import com.example.atyourservice.UserServices.Class.Services;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -40,8 +40,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class UserFlagServiceActivity extends AppCompatActivity {
+import android.os.Bundle;
 
+import com.example.atyourservice.R;
+
+public class UserBornCertificateActivity extends AppCompatActivity {
     EditText fullNameField, emailField, nationalNumField,serviceTypeField, servicePriceField, balanceField;
     Button btnReguest;
     Services srv;
@@ -52,20 +55,19 @@ public class UserFlagServiceActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(UserFlagServiceActivity.this, HomeActivity.class));
+        startActivity(new Intent(UserBornCertificateActivity.this, HomeActivity.class));
         finish();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_flag_service);
+        setContentView(R.layout.activity_user_born_certificate);
 
         Init();
         GetData();
         Listners();
-
     }
+
     private void Init() {
         pb = new ProgressDialog(this);
         pb.setTitle("يرجى الانتظار !");
@@ -102,8 +104,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                     List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
                     for(int i=0; i<gr.size(); i++) {
-//                    test.add(gr.get(0).toObject(Users.class));
-                        if(gr.get(i).getString("id").equals("flagService")){
+                        if(gr.get(i).getString("id").equals("borncertificateService")){
                             srv = new Services(gr.get(i).getString("name").toString(),gr.get(i).getString("price").toString());
                         }
                     }
@@ -126,7 +127,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                     String Payment_Status = "";
                     if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                         Payment_Status = "0";
-                        //Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
                         msg="رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا";
                     }else {
                         Payment_Status = "1";
@@ -149,8 +149,8 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                     }
 
                     if(!nationalNumField.getText().equals("") && nationalNumField.length()<10){
-                            pb.dismiss();
-                            Toast.makeText(UserFlagServiceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
+                        pb.dismiss();
+                        Toast.makeText(UserBornCertificateActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
                     }else{
                         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
@@ -182,8 +182,8 @@ public class UserFlagServiceActivity extends AppCompatActivity {
 //                            editor.putString("service", "F");
 //                            editor.apply();
 
-                                    final AlertDialog.Builder builder = new AlertDialog.Builder((UserFlagServiceActivity.this));
-                                    LayoutInflater inflater = (UserFlagServiceActivity.this).getLayoutInflater();
+                                    final AlertDialog.Builder builder = new AlertDialog.Builder((UserBornCertificateActivity.this));
+                                    LayoutInflater inflater = (UserBornCertificateActivity.this).getLayoutInflater();
                                     builder.setView(inflater.inflate(R.layout.seccess_req_dialog, null));
                                     final AlertDialog dialog2 = builder.create();
                                     ((FrameLayout) dialog2.getWindow().getDecorView().findViewById(android.R.id.content)).setForeground(new ColorDrawable(Color.TRANSPARENT));
@@ -201,7 +201,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                                     btnOk.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            startActivity(new Intent(UserFlagServiceActivity.this,HomeActivity.class));
+                                            startActivity(new Intent(UserBornCertificateActivity.this,HomeActivity.class));
 
                                         }
                                     });

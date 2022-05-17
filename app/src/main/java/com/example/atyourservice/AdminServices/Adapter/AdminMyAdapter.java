@@ -1,5 +1,6 @@
 package com.example.atyourservice.AdminServices.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.atyourservice.AdminServices.Activities.AdminFlagServiceActivity;
 import com.example.atyourservice.R;
 import com.example.atyourservice.UserServices.Class.PendingServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,11 +38,13 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
     private Context mContext;
     private List<PendingServices> mRequestsList;
     RecyclerView mRecyclerView;
+    Activity activity;
 
-    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList, RecyclerView mRecyclerView) {
+    public AdminMyAdapter(Context mContext, List<PendingServices> mRequestsList, RecyclerView mRecyclerView, Activity activity) {
         this.mContext = mContext;
         this.mRequestsList = mRequestsList;
         this.mRecyclerView = mRecyclerView;
+        this.activity = activity;
     }
 
     @Override
@@ -108,80 +112,86 @@ public class AdminMyAdapter extends RecyclerView.Adapter<AdminRequestViewHolder>
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(View v) {
-                                dialog.show();
+                                try {
+                                    dialog.show();
 
-                                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                                    String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-                                String Service_Status = "" ;
-                                if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("0")) {
-                                    Service_Status = "1";
-                                }else if(mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("1")) {
-                                    Service_Status = "2";
-                                }
-
-                                Map<String, Object> map = new HashMap<>();
-                                map.put("Replay_Date", date);
-                                map.put("Service_Status", Service_Status);
-
-                                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
-                                        .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        dialog.dismiss();
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(mContext, "تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
-                                            mRecyclerView.notifyAll();
-
-                                        }
+                                    String Service_Status = "";
+                                    if (mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("0")) {
+                                        Service_Status = "1";
+                                    } else if (mRequestsList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("1")) {
+                                        Service_Status = "2";
                                     }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
+
+                                    Map<String, Object> map = new HashMap<>();
+                                    map.put("Replay_Date", date);
+                                    map.put("Service_Status", Service_Status);
+
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
+                                            .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
                                                 dialog.dismiss();
-                                                Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
-
+                                                Toast.makeText(mContext, "تم قبول الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                                activity.recreate();
                                             }
-                                        });
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    dialog.dismiss();
+                                                    Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
 
+                                                }
+                                            });
+
+
+                            }catch(Exception ex)
+                            {
                             }
+                        }
                         });
-
 
                         Reject.setOnClickListener(new View.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             @Override
                             public void onClick(View v) {
-                                dialog.show();
+                                try{
+                                    dialog.show();
 
-                                String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                                    String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                                    String rejValue="3";
 
-                                Map<String, Object> map = new HashMap<>();
-                                map.put("Replay_Date", date);
-                                map.put("Service_Status", "3");
+                                    Map<String, Object> map = new HashMap<>();
+                                    map.put("Replay_Date", date);
+                                    map.put("Service_Status", rejValue);
 
-                                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
-                                        .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        dialog.dismiss();
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(mContext, "تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
-                                            mRecyclerView.notifyAll();
-
-                                        }
-                                    }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.collection("PendingService").document(mRequestsList.get(holder.getBindingAdapterPosition()).id)
+                                            .update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
                                                 dialog.dismiss();
-                                                Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(mContext, "تم رفض الطلب بنجاح", Toast.LENGTH_SHORT).show();
+                                                activity.recreate();
 
                                             }
-                                        });
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    dialog.dismiss();
+                                                    Toast.makeText(mContext, "لقد حدث خطأ...حاول مرة اخرى", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            });
+                                }catch(Exception ex){}
 
                             }
                         });

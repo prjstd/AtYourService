@@ -50,64 +50,66 @@ public class MyAdapter extends RecyclerView.Adapter<UserHistoryViewHolder>{
                 holder.mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        try {
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                            View vi;
+                            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                            vi = inflater.inflate(R.layout.user_history_info_dialog, null);
+                            builder.setView(vi);
 
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                        View vi;
-                        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        vi = inflater.inflate(R.layout.user_history_info_dialog, null);
-                        builder.setView(vi);
+                            final TextView Nationality_Number = vi.findViewById(R.id.tv_Nationality_Number);
+                            TextView Request_Date=vi.findViewById(R.id.tv_Request_Date);
+                            TextView Replay_Date=vi.findViewById(R.id.tv_Replay_Date);
+                            TextView Service_Status=vi.findViewById(R.id.tv_Service_Status);
+                            TextView Service_Price=vi.findViewById(R.id.tv_Service_Price);
+                            TextView Payment_Status=vi.findViewById(R.id.tv_Payment_Status);
 
-                        final TextView Nationality_Number = vi.findViewById(R.id.tv_Nationality_Number);
-                        TextView Request_Date=vi.findViewById(R.id.tv_Request_Date);
-                        TextView Replay_Date=vi.findViewById(R.id.tv_Replay_Date);
-                        TextView Service_Status=vi.findViewById(R.id.tv_Service_Status);
-                        TextView Service_Price=vi.findViewById(R.id.tv_Service_Price);
-                        TextView Payment_Status=vi.findViewById(R.id.tv_Payment_Status);
-
-                        Button ok=vi.findViewById(R.id.dialogButtonOk);
+                            Button ok=vi.findViewById(R.id.dialogButtonOk);
 
 
-                        final FirebaseAuth auth=FirebaseAuth.getInstance();
+                            final FirebaseAuth auth=FirebaseAuth.getInstance();
 
-                        final AlertDialog dialog = builder.create();
-                        dialog.show();
-                        if(!mHistoryList.get(position).Nationality_Number.equals("")){
-                            Nationality_Number.setText(mHistoryList.get(position).Nationality_Number);
-                        }else{
-                            Nationality_Number.setText("لم تقم بادخال الرقم الوطني عند التقديم");
+                            final AlertDialog dialog = builder.create();
+                            dialog.show();
+                            if(!mHistoryList.get(position).Nationality_Number.equals("")){
+                                Nationality_Number.setText(mHistoryList.get(position).Nationality_Number);
+                            }else{
+                                Nationality_Number.setText("لم تقم بادخال الرقم الوطني عند التقديم");
 
-                        }
-
-                        Request_Date.setText(mHistoryList.get(position).Request_Date);
-
-                        if(!mHistoryList.get(position).Replay_Date.equals("")){
-                            Replay_Date.setText(mHistoryList.get(position).Replay_Date);
-                        }else{
-                            Replay_Date.setText("لم يتم الرد بعد");
-                        }
-                        Service_Price.setText(mHistoryList.get(position).Service_Price);
-
-                        if(mHistoryList.get(position).Service_Status.equals("0")){
-                            Service_Status.setText("قيد الاجراء");
-                        }else if(mHistoryList.get(position).Service_Status.equals("1")){
-                            Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
-                        }else if(mHistoryList.get(position).Service_Status.equals("2")){
-                            Service_Status.setText("تم القبول و الاصدار");
-                        }else if(mHistoryList.get(position).Service_Status.equals("3")){
-                            Service_Status.setText("الطلب مرفوض");
-                        }
-                        if(mHistoryList.get(position).Payment_Status.equals("0")){
-                            Payment_Status.setText("الرصيد غير كافي");
-                        }else if(mHistoryList.get(position).Payment_Status.equals("1")){
-                            Payment_Status.setText("تم الدفع");
-                        }
-
-                        ok.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog.dismiss();
                             }
-                        });
+
+                            Request_Date.setText(mHistoryList.get(position).Request_Date);
+
+                            if(!mHistoryList.get(position).Replay_Date.equals("")){
+                                Replay_Date.setText(mHistoryList.get(position).Replay_Date);
+                            }else{
+                                Replay_Date.setText("لم يتم الرد بعد");
+                            }
+                            Service_Price.setText(mHistoryList.get(position).Service_Price);
+
+                            if(mHistoryList.get(position).Service_Status.equals("0")){
+                                Service_Status.setText("قيد الاجراء");
+                            }else if(mHistoryList.get(position).Service_Status.equals("1")){
+                                Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
+                            }else if(mHistoryList.get(position).Service_Status.equals("2")){
+                                Service_Status.setText("تم القبول و الاصدار");
+                            }else if(mHistoryList.get(position).Service_Status.equals("3")){
+                                Service_Status.setText("الطلب مرفوض");
+                            }
+                            if(mHistoryList.get(position).Payment_Status.equals("0")){
+                                Payment_Status.setText("الرصيد غير كافي");
+                            }else if(mHistoryList.get(position).Payment_Status.equals("1")){
+                                Payment_Status.setText("تم الدفع");
+                            }
+
+                            ok.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+                        }catch (Exception ex){}
+
                     }
                 });
             }

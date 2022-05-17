@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UserServices.Activiteis.UserIdentityerviceActivity"
     android:layoutDirection="rtl"
     android:background="@color/white">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:id="@+id/tool"
@@ -47,10 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view2"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
                 android:fontFamily="sans-serif"
-                android:text="@string/main_menu_ncrc"
+                android:text="@string/main_menu_identity"
                 android:textColor="#ffffff"
                 android:textSize="24dp"
                 android:textStyle="bold" />

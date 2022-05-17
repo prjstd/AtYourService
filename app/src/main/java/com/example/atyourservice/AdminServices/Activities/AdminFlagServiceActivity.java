@@ -84,7 +84,7 @@ public class AdminFlagServiceActivity extends AppCompatActivity {
                 }
 
                 if(!mRequestsList.isEmpty()){
-                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminFlagServiceActivity.this, mRequestsList, mRecyclerView);
+                    AdminMyAdapter adminMyAdapter = new AdminMyAdapter(AdminFlagServiceActivity.this, mRequestsList, mRecyclerView, AdminFlagServiceActivity.this);
                     mRecyclerView.setAdapter(adminMyAdapter);
                 }else{
                     noData.setVisibility(View.VISIBLE);

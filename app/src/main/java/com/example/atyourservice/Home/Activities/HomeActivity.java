@@ -14,6 +14,8 @@ import com.example.atyourservice.AdminServices.Activities.AdminIdentityServiceAc
 import com.example.atyourservice.AdminServices.Activities.AdminNCRCServiceActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminNonPayPendingActivity;
 import com.example.atyourservice.AdminServices.Activities.AdminPassportServiceActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserBornCertificateActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserDriveLicenseActivity;
 import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.example.atyourservice.Home.Adapter.HomeAdapter;
 import com.example.atyourservice.R;
@@ -96,60 +98,85 @@ public class HomeActivity extends AppCompatActivity {
                     case 0:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            HomeActivity.this.finish();
+
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 1:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminNCRCServiceActivity.class));
+                            HomeActivity.this.finish();
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserNCRCServiceActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 2:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminIdentityServiceActivity.class));
+                            HomeActivity.this.finish();
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserIdentityerviceActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 3:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminPassportServiceActivity.class));
+                            HomeActivity.this.finish();
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserPassporterviceActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 4:
                         if(flag){
-                            startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, AdminIdentityServiceActivity.class));
+                            HomeActivity.this.finish();
 
                         }else{
-                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, UserBornCertificateActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 5:
-                        if(flag){
+                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminFlagServiceActivity.class));
+                            HomeActivity.this.finish();
+
 
                         }else{
-                            startActivity(new Intent(HomeActivity.this, UserFlagServiceActivity.class));
+                            startActivity(new Intent(HomeActivity.this, UserDriveLicenseActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                     case 6:
                         startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                        HomeActivity.this.finish();
+
                         break;
                     case 7:
                         if(flag){
                             startActivity(new Intent(HomeActivity.this, AdminNonPayPendingActivity.class));
+                            HomeActivity.this.finish();
 
                         }else{
                             startActivity(new Intent(HomeActivity.this, UserHistoryRequestsActivity.class));
+                            HomeActivity.this.finish();
+
                         }
                         break;
                 }
