@@ -1,4 +1,4 @@
-package com.example.atyourservice.Home.Adapter;
+package com.example.atyourservice.UserServices.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,11 +38,10 @@ public class MyAdapter extends RecyclerView.Adapter<UserHistoryViewHolder>{
         return new UserHistoryViewHolder(mView);
     }
 
-    @SuppressLint("RecyclerView")
     @Override
-    public void onBindViewHolder( UserHistoryViewHolder holder, int position) {
-        holder.tvReqTitle.setText(mHistoryList.get(position).Service_Name);
-        holder.tvReqDate.setText("تاريخ التقديم : "+mHistoryList.get(position).Request_Date);
+    public void onBindViewHolder( UserHistoryViewHolder holder, final int Position) {
+        holder.tvReqTitle.setText(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Name);
+        holder.tvReqDate.setText("تاريخ التقديم : "+mHistoryList.get(holder.getBindingAdapterPosition()).Request_Date);
 
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,34 +70,34 @@ public class MyAdapter extends RecyclerView.Adapter<UserHistoryViewHolder>{
 
                             final AlertDialog dialog = builder.create();
                             dialog.show();
-                            if(!mHistoryList.get(position).Nationality_Number.equals("")){
-                                Nationality_Number.setText(mHistoryList.get(position).Nationality_Number);
+                            if(!mHistoryList.get(holder.getBindingAdapterPosition()).Nationality_Number.equals("")){
+                                Nationality_Number.setText(mHistoryList.get(holder.getBindingAdapterPosition()).Nationality_Number);
                             }else{
                                 Nationality_Number.setText("لم تقم بادخال الرقم الوطني عند التقديم");
 
                             }
 
-                            Request_Date.setText(mHistoryList.get(position).Request_Date);
+                            Request_Date.setText(mHistoryList.get(holder.getBindingAdapterPosition()).Request_Date);
 
-                            if(!mHistoryList.get(position).Replay_Date.equals("")){
-                                Replay_Date.setText(mHistoryList.get(position).Replay_Date);
+                            if(!mHistoryList.get(holder.getBindingAdapterPosition()).Replay_Date.equals("")){
+                                Replay_Date.setText(mHistoryList.get(holder.getBindingAdapterPosition()).Replay_Date);
                             }else{
                                 Replay_Date.setText("لم يتم الرد بعد");
                             }
-                            Service_Price.setText(mHistoryList.get(position).Service_Price);
+                            Service_Price.setText(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Price);
 
-                            if(mHistoryList.get(position).Service_Status.equals("0")){
+                            if(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Status.equals("0")){
                                 Service_Status.setText("قيد الاجراء");
-                            }else if(mHistoryList.get(position).Service_Status.equals("1")){
+                            }else if(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Status.equals("1")){
                                 Service_Status.setText("تم القبول مع انتظار الدفع للاصدار");
-                            }else if(mHistoryList.get(position).Service_Status.equals("2")){
+                            }else if(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Status.equals("2")){
                                 Service_Status.setText("تم القبول و الاصدار");
-                            }else if(mHistoryList.get(position).Service_Status.equals("3")){
+                            }else if(mHistoryList.get(holder.getBindingAdapterPosition()).Service_Status.equals("3")){
                                 Service_Status.setText("الطلب مرفوض");
                             }
-                            if(mHistoryList.get(position).Payment_Status.equals("0")){
+                            if(mHistoryList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("0")){
                                 Payment_Status.setText("الرصيد غير كافي");
-                            }else if(mHistoryList.get(position).Payment_Status.equals("1")){
+                            }else if(mHistoryList.get(holder.getBindingAdapterPosition()).Payment_Status.equals("1")){
                                 Payment_Status.setText("تم الدفع");
                             }
 

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.atyourservice.LoginActivity;
 import com.example.atyourservice.R;
 import com.example.atyourservice.Reset.Activities.ResetPasswordActivity;
+import com.example.atyourservice.UserServices.Activiteis.UserFlagServiceActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -39,7 +40,8 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
+        startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+        finish();
     }
 
     @Override

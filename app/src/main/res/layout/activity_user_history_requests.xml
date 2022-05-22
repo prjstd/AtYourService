@@ -27,11 +27,47 @@
                 android:textSize="22dp"
                 android:textStyle="bold" />
         </RelativeLayout>
-
     </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:weightSum="2"
+        android:layout_below="@id/tool"
+        android:id="@+id/btnsLay">
+        <Button
+            android:id="@+id/Accepted"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape2"
+            android:text="مقبولة"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/Rejected"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape2"
+            android:text="مرفوضة"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_below="@id/tool"
+        android:layout_below="@id/btnsLay"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

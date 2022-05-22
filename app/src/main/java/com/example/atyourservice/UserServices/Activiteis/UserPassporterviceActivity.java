@@ -120,13 +120,7 @@ public class UserPassporterviceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     pb.show();
-//                if(!nationalNumField.getText().equals("")){
-//                    if(nationalNumField.length()<10){
-//                        pb.dismiss();
-//                        Toast.makeText(UserFlagServiceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
-//                        return;
-//                    }
-//                }
+
                     String Payment_Status = "";
                     if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                         Payment_Status = "0";
@@ -153,6 +147,7 @@ public class UserPassporterviceActivity extends AppCompatActivity {
 
 
                     }
+                    if(nationalNumField.length() == 0 || nationalNumField.length() == 10){
 
                     String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
@@ -207,6 +202,10 @@ public class UserPassporterviceActivity extends AppCompatActivity {
 
                         }
                     });
+                }else {
+                    pb.dismiss();
+                    Toast.makeText(UserPassporterviceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
+                }
                 }catch (Exception ex){}
 
             }

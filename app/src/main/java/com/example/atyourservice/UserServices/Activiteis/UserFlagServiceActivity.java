@@ -83,9 +83,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
         balanceField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Ballance", ""));
         blnc=Double.parseDouble(balanceField.getText().toString());
 
-//        if(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("service","").contains("F")){
-//            btnReguest.setEnabled(false);
-//        }
     }
     private void GetData(){
 
@@ -102,7 +99,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                     List<DocumentSnapshot> gr = queryDocumentSnapshots.getDocuments();
 
                     for(int i=0; i<gr.size(); i++) {
-//                    test.add(gr.get(0).toObject(Users.class));
                         if(gr.get(i).getString("id").equals("flagService")){
                             srv = new Services(gr.get(i).getString("name").toString(),gr.get(i).getString("price").toString());
                         }
@@ -126,7 +122,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                     String Payment_Status = "";
                     if(Double.parseDouble(balanceField.getText().toString()) < Double.parseDouble(servicePriceField.getText().toString())){
                         Payment_Status = "0";
-                        //Toast.makeText(UserFlagServiceActivity.this, "رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا", Toast.LENGTH_SHORT).show();
                         msg="رصيدك الحالي لا يكفي لهذه الخدمة...سيتم تقديم الطلب حاليا ولكن ارجو تعبئة الرصيد باسرع وقت ممكن حتى لا يبقى طلبك معلقا";
                     }else {
                         Payment_Status = "1";
@@ -148,10 +143,7 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                         });
                     }
 
-                    if(!nationalNumField.getText().equals("") && nationalNumField.length()<10){
-                            pb.dismiss();
-                            Toast.makeText(UserFlagServiceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
-                    }else{
+                    if(nationalNumField.length() == 0 || nationalNumField.length() == 10){
                         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -177,10 +169,6 @@ public class UserFlagServiceActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     pb.dismiss();
                                     btnReguest.setEnabled(false);
-
-//                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
-//                            editor.putString("service", "F");
-//                            editor.apply();
 
                                     final AlertDialog.Builder builder = new AlertDialog.Builder((UserFlagServiceActivity.this));
                                     LayoutInflater inflater = (UserFlagServiceActivity.this).getLayoutInflater();
@@ -209,6 +197,11 @@ public class UserFlagServiceActivity extends AppCompatActivity {
 
                             }
                         });
+                    }
+
+                    else {
+                            pb.dismiss();
+                            Toast.makeText(UserFlagServiceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
                     }
 
 

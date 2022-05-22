@@ -41,6 +41,8 @@
     <string name="main_menu_born">شهادة ميلاد</string>
     <string name="main_menu_drive">رخصة قيادة</string>
     <string name="main_menu_passport">جواز سفر</string>
+    <string name="main_space_history">السجل</string>
+    <string name="main_space_profile">البروفايل</string>
 
 
     //PendingService

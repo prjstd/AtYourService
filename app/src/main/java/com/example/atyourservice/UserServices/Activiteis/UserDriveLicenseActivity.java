@@ -143,10 +143,8 @@ public class UserDriveLicenseActivity extends AppCompatActivity {
                         });
                     }
 
-                    if(!nationalNumField.getText().equals("") && nationalNumField.length()<10){
-                        pb.dismiss();
-                        Toast.makeText(UserDriveLicenseActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
-                    }else{
+                    if(nationalNumField.length() == 0 || nationalNumField.length() == 10){
+
                         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -204,8 +202,10 @@ public class UserDriveLicenseActivity extends AppCompatActivity {
 
                             }
                         });
+                    }else {
+                        pb.dismiss();
+                        Toast.makeText(UserDriveLicenseActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
                     }
-
 
                 }catch (Exception ex){}
 

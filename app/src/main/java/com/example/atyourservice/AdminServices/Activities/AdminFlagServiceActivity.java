@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.atyourservice.AdminServices.Adapter.AdminMyAdapter;
 import com.example.atyourservice.Home.Activities.HomeActivity;
 import com.example.atyourservice.UserServices.Class.PendingServices;
-import com.example.atyourservice.Home.Adapter.MyAdapter;
 import com.example.atyourservice.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;

@@ -79,9 +79,6 @@ public class UserIdentityerviceActivity extends AppCompatActivity {
         balanceField.setText(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Ballance", ""));
         blnc=Double.parseDouble(balanceField.getText().toString());
 
-//        if(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("service","").contains("F")){
-//            btnReguest.setEnabled(false);
-//        }
     }
     private void GetData(){
 
@@ -142,10 +139,8 @@ public class UserIdentityerviceActivity extends AppCompatActivity {
                         });
                     }
 
-                    if(!nationalNumField.getText().equals("") && nationalNumField.length()<10){
-                        pb.dismiss();
-                        Toast.makeText(UserIdentityerviceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
-                    }else{
+                    if(nationalNumField.length() == 0 || nationalNumField.length() == 10){
+
                         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -171,10 +166,6 @@ public class UserIdentityerviceActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     pb.dismiss();
                                     btnReguest.setEnabled(false);
-
-//                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
-//                            editor.putString("service", "F");
-//                            editor.apply();
 
                                     final AlertDialog.Builder builder = new AlertDialog.Builder((UserIdentityerviceActivity.this));
                                     LayoutInflater inflater = (UserIdentityerviceActivity.this).getLayoutInflater();
@@ -203,7 +194,10 @@ public class UserIdentityerviceActivity extends AppCompatActivity {
 
                             }
                         });
-                    }
+                    }else {
+                    pb.dismiss();
+                    Toast.makeText(UserIdentityerviceActivity.this, "الرقم الوطني يتكون من 10 خانات ", Toast.LENGTH_SHORT).show();
+                }
 
 
                 }catch (Exception ex){}

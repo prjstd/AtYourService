@@ -27,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
+     FirebaseAuth auth;
 
     CircleImageView img;
     private Button btnSignup, btnLogin, btnReset;
@@ -91,46 +91,44 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                try{
+                                    if (task.isSuccessful()) {
+                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                        db.collection("Users")
+                                                .document(auth.getCurrentUser().getUid())
+                                                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+                                                editor.putString("Uid", documentSnapshot.getString("Uid"));
+                                                editor.putString("Full-Name", documentSnapshot.getString("Full-Name"));
+                                                editor.putString("Email", documentSnapshot.getString("Email"));
+                                                editor.putString("Password", documentSnapshot.getString("Password"));
+                                                editor.putString("Ballance", documentSnapshot.getString("Ballance"));
+                                                if(email.contains("@admin") || email.contains("@Admin") || email.contains("@ADMIN") ) {
+                                                    editor.putString("type", "Admin");
+                                                }else{
+                                                    editor.putString("type", "");
+                                                }
+                                                editor.apply();
 
-                                if (task.isSuccessful()) {
-                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                    db.collection("Users")
-                                            .document(auth.getCurrentUser().getUid())
-                                            .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
-                                            editor.putString("Uid", documentSnapshot.getString("Uid"));
-                                            editor.putString("Full-Name", documentSnapshot.getString("Full-Name"));
-                                            editor.putString("Email", documentSnapshot.getString("Email"));
-                                            editor.putString("Password", documentSnapshot.getString("Password"));
-                                            editor.putString("Ballance", documentSnapshot.getString("Ballance"));
-                                            if(email.contains("@admin") || email.contains("@Admin") || email.contains("@ADMIN") ) {
-                                                editor.putString("type", "Admin");
-                                            }else{
-                                                editor.putString("type", "");
+                                                pb.dismiss();
+                                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                                LoginActivity.this.finish();
+
                                             }
-                                            editor.apply();
-
-                                            pb.dismiss();
-                                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                                            finish();
-
-                                        }
-                                    });
-
-
-
-                                } else {
-
-                                    if (password.length() < 6) {
-                                        pb.dismiss();
-                                        inputPassword.setError(getString(R.string.minimum_password));
+                                        });
                                     } else {
-                                        pb.dismiss();
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        if (password.length() < 6) {
+                                            pb.dismiss();
+                                            inputPassword.setError(getString(R.string.minimum_password));
+                                        } else {
+                                            pb.dismiss();
+                                            Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        }
                                     }
-                                }
+                                }catch (Exception ex){}
+
                             }
                         });
             }

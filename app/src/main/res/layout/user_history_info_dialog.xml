@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/boardershape"
-    android:theme="@style/Theme.AppCompat">
+    android:theme="@style/Theme.AppCompat"
+    android:layoutDirection="ltr">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
