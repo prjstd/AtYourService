@@ -67,53 +67,56 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                     .update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        String NEW_PASS = NewPass.getText().toString();
-                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        AuthCredential credential = EmailAuthProvider
-                                                .getCredential(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Email", ""),
-                                                        getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Password", ""));
+                                    try{
+                                        if(task.isSuccessful()){
+                                            String NEW_PASS = NewPass.getText().toString();
+                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                            AuthCredential credential = EmailAuthProvider
+                                                    .getCredential(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Email", ""),
+                                                            getSharedPreferences("UserInfo", MODE_PRIVATE).getString("Password", ""));
 
-                                        user.reauthenticate(credential)
-                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
+                                            user.reauthenticate(credential)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
 
-                                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                                        user.updatePassword(NEW_PASS)
-                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                    @Override
-                                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                                        if (task.isSuccessful()) {
+                                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                            user.updatePassword(NEW_PASS)
+                                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                        @Override
+                                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                                            if (task.isSuccessful()) {
 
-                                                                            if(task.isSuccessful()){
-                                                                                FirebaseAuth auth = FirebaseAuth.getInstance();
-                                                                                auth.signOut();
+                                                                                if(task.isSuccessful()){
+                                                                                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                                                                                    auth.signOut();
 
-                                                                                SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
-                                                                                editor.putString("Uid", "");
-                                                                                editor.putString("Full-Name", "");
-                                                                                editor.putString("Email", "");
-                                                                                editor.putString("Password", "");
-                                                                                editor.putString("Ballance", "");
-                                                                                editor.putString("type", "");
+                                                                                    SharedPreferences.Editor editor = getSharedPreferences("UserInfo", MODE_PRIVATE).edit();
+                                                                                    editor.putString("Uid", "");
+                                                                                    editor.putString("Full-Name", "");
+                                                                                    editor.putString("Email", "");
+                                                                                    editor.putString("Password", "");
+                                                                                    editor.putString("Ballance", "");
+                                                                                    editor.putString("type", "");
 
-                                                                                editor.apply();
+                                                                                    editor.apply();
 
-                                                                                Toast.makeText(ResetPasswordActivity.this, "تم تغيير كلمة السر, الرجاء اعادة الدخول لتفعيل كلمة السر الجديدة", Toast.LENGTH_LONG).show();
-                                                                                startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
-                                                                                finish();
+                                                                                    Toast.makeText(ResetPasswordActivity.this, "تم تغيير كلمة السر, الرجاء اعادة الدخول لتفعيل كلمة السر الجديدة", Toast.LENGTH_LONG).show();
+                                                                                    startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
+                                                                                    finish();
+                                                                                }
+                                                                                else
+                                                                                    Toast.makeText(ResetPasswordActivity.this, "لقد حدث خطأ, حاول لاحقا من فضلك.", Toast.LENGTH_SHORT).show();
+
                                                                             }
-                                                                            else
-                                                                                Toast.makeText(ResetPasswordActivity.this, "لقد حدث خطأ, حاول لاحقا من فضلك.", Toast.LENGTH_SHORT).show();
-
                                                                         }
-                                                                    }
-                                                                });
-                                                    }
-                                                });
+                                                                    });
+                                                        }
+                                                    });
 
-                                    }
+                                        }
+                                    }catch(Exception ex){}
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
